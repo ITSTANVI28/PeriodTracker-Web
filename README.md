@@ -8,7 +8,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-5.1.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Privacy](https://img.shields.io/badge/Privacy-100%25_Offline-success?style=for-the-badge&logo=shield)](https://github.com/ITSPRANAV16/PeriodTracker-Web)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25_Offline-success?style=for-the-badge&logo=shield)](https://github.com/ITSTANVI28/PeriodTracker-Web)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
 
 [Live Demo](http://localhost:3000/) • [Features](#-key-features) • [Installation](#-getting-started) • [Tech Stack](#-tech-stack) • [Privacy Architecture](#-100-offline-privacy-guarantee)
@@ -119,7 +119,7 @@ cyclesync/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/ITSPRANAV16/PeriodTracker-Web.git
+   git clone https://github.com/ITSTANVI28/PeriodTracker-Web.git
    cd PeriodTracker-Web
    ```
 
