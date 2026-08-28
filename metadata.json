@@ -1,0 +1,6 @@
+{
+  "name": "CycleSync",
+  "description": "Official marketing landing page for the CycleSync Android app by Duo Developers (Lead: Tanvi Yadav), featuring app previews, dev log timeline, and APK download links.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
