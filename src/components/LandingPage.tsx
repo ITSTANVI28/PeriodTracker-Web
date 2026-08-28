@@ -2041,51 +2041,149 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* Special Message from Duo Developers */}
-      <section id="team-note" className="py-20 bg-gradient-to-br from-[#FFF0F3] via-[#FFF8F8] to-[#FCE7F0] border-t border-[#B95679]/20 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-[#B95679]/20 relative">
+      <section id="team-note" className="py-16 sm:py-24 bg-gradient-to-br from-[#FFF0F3] via-[#FFF8F8] to-[#FCE7F0] border-t border-[#B95679]/20 relative overflow-hidden">
+        {/* Decorative background blurs */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-[#B95679]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#E8B6CB]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-2xl border border-[#B95679]/25 relative">
             <div className="absolute top-6 right-8 text-[#B95679]/15 pointer-events-none hidden sm:block">
-              <Quote className="w-20 h-20" />
+              <Quote className="w-24 h-24" />
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest mb-6">
-              <Heart className="w-3.5 h-3.5 fill-[#B95679]" /> Message from Duo Developers
+            {/* Badge Header */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-extrabold uppercase tracking-widest mb-6 shadow-xs">
+              <Heart className="w-4 h-4 fill-[#B95679]" /> Message from Duo Developers
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-[#201A1B] leading-tight mb-4">
-              A Personal Message to All Our Users 🌸
+            {/* Dynamic Multi-Lingual Heading */}
+            <h3 className="text-2xl sm:text-4xl font-extrabold font-display text-[#201A1B] leading-tight mb-6">
+              {selectedLang === 'mr' && "Duo Developers कडून आमच्या युजर्ससाठी खास संदेश 🌸"}
+              {selectedLang === 'hi' && "Duo Developers की ओर से सभी उपयोगकर्ताओं के लिए विशेष संदेश 🌸"}
+              {selectedLang === 'en' && "A Personal Message to All Our Users 🌸"}
             </h3>
 
-            <div className="space-y-4 text-sm sm:text-base text-[#201A1B]/85 leading-relaxed font-sans">
-              <p className="font-semibold text-[#B95679]">
-                Dear CycleSync Community,
-              </p>
-              <p>
-                We built <strong>CycleSync</strong> with a strong commitment to female health, dignity, and absolute privacy. Health tracking is deeply personal — and we strongly believe that no user should ever have to trade their data privacy to track their menstrual cycles, assess PCOD symptoms, or generate clinical reports.
-              </p>
-              <p>
-                That is why CycleSync is designed to be <strong>100% offline</strong> with local SQLite database storage on your device. Zero cloud tracking, zero data selling, and zero invasive telemetry.
-              </p>
-              <p>
-                Thank you for putting your trust in CycleSync. We are continuously improving the app and bringing you features designed to empower your everyday health journey.
-              </p>
+            {/* Dynamic Message Body */}
+            {selectedLang === 'mr' ? (
+              <div className="space-y-4 text-sm sm:text-base text-[#201A1B]/85 leading-relaxed font-sans">
+                <p className="font-bold text-[#B95679] text-base sm:text-lg">
+                  प्रिय CycleSync परिवारास सप्रेम नमस्कार,
+                </p>
+                <p>
+                  आम्ही — <strong>तन्वी यादव</strong> आणि <strong>प्रणव</strong> (Duo Developers) — हे ॲप एकाच मुख्य प्रेरणेतून तयार केले: <strong>महिलांचे आरोग्य, प्रतिष्ठा आणि वैयक्तिक गोपनीयतेचे (100% Privacy) सर्वोच्च रक्षण करणे.</strong>
+                </p>
+                <p>
+                  मासिक पाळी, ओव्ह्युलेशन सायकल आणि PCOD सारख्या लक्षणांची नोंद ही प्रत्येक महिलेसाठी अतिशय खाजगी आणि संवेदनशील बाब आहे. यासाठी कोणत्याही युजरला तिचा वैयक्तिक आरोग्य डेटा क्लाऊड सर्व्हर्सवर विकावा किंवा जाहिरात कंपन्यांशी शेअर करावा लागू नये, यावर आमचा ठाम विश्वास आहे.
+                </p>
+                <p>
+                  म्हणूनच <strong>CycleSync</strong> हे पूर्णपणे <strong>100% Offline</strong> आर्किटेक्चरवर डिझाइन केले आहे. तुमचा सर्व डेटा फक्त आणि फक्त तुमच्या फोनच्या स्थानिक SQLite/Room डेटाबेसमध्ये सुरक्षित राहतो. यात <strong>कोणतेही क्लाऊड ट्रॅकिंग नाही, कोणतीही जाहिरात नाही, आणि अकाउंट बनवण्याची सक्ती नाही.</strong>
+                </p>
+                <p className="font-medium text-[#201A1B]">
+                  आमच्यावर दाखवलेल्या विश्वासाबद्दल धन्यवाद! आम्ही सतत CycleSync मध्ये अधिक प्रगत, सुरक्षित आणि उपयुक्त आरोग्य फीचर्स आणत राहू. 🌸
+                </p>
+              </div>
+            ) : selectedLang === 'hi' ? (
+              <div className="space-y-4 text-sm sm:text-base text-[#201A1B]/85 leading-relaxed font-sans">
+                <p className="font-bold text-[#B95679] text-base sm:text-lg">
+                  प्रिय CycleSync समुदाय,
+                </p>
+                <p>
+                  हमने — <strong>तन्वी यादव</strong> और <strong>प्रणव</strong> (Duo Developers) — इस ऐप का निर्माण महिलाओं के स्वास्थ्य, सम्मान और १००% गोपनीयता के संरक्षण हेतु किया है।
+                </p>
+                <p>
+                  मासिक धर्म और स्वास्थ्य की जानकारी अत्यंत व्यक्तिगत होती है। हमारा दृढ़ विश्वास है कि पीरियड्स व PCOD ट्रैकिंग के लिए किसी को भी अपना डेटा किसी क्लाउड या विज्ञापन कंपनियों को साझा नहीं करना चाहिए।
+                </p>
+                <p>
+                  इसीलिए <strong>CycleSync</strong> पूर्णतः <strong>100% Offline</strong> काम करता है। आपका डेटा केवल आपके फोन के सुरक्षित SQLite/Room स्टोरेज में रहता है — <strong>शून्य क्लाउड डेटा, शून्य विज्ञापन, और शून्य ट्रैकिंग!</strong>
+                </p>
+                <p className="font-medium text-[#201A1B]">
+                  CycleSync पर अपना विश्वास बनाए रखने के लिए धन्यवाद। हम इसे निरंतर बेहतर बनाने के लिए समर्पित हैं। 🌸
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4 text-sm sm:text-base text-[#201A1B]/85 leading-relaxed font-sans">
+                <p className="font-bold text-[#B95679] text-base sm:text-lg">
+                  Dear CycleSync Community,
+                </p>
+                <p>
+                  We built <strong>CycleSync</strong> with a strong and uncompromising commitment to women's health, bodily dignity, and absolute privacy. Menstrual cycles, symptom logs, and PCOD screenings are deeply intimate — and we strongly believe that no user should ever have to trade their data privacy or be monetized by ad networks just to track their reproductive health.
+                </p>
+                <p>
+                  That is why CycleSync is engineered to be <strong>100% offline</strong> with local SQLite/Room database storage directly on your Android device. <strong>Zero cloud servers, zero data harvesting, zero targeted advertising, and zero mandatory signups.</strong>
+                </p>
+                <p>
+                  Whether you are predicting upcoming cycles, assessing clinical indicators, or generating a doctor-ready PDF summary for your Gynecologist, CycleSync puts complete ownership back in your hands.
+                </p>
+                <p className="font-medium text-[#201A1B]">
+                  Thank you for putting your trust in CycleSync. We are continuously improving this platform to empower your everyday health journey. 🌸
+                </p>
+              </div>
+            )}
+
+            {/* 4 Core Vision Pillars */}
+            <div className="mt-8 pt-6 border-t border-[#B95679]/15 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+              <div className="p-3 bg-[#FFF8F8] rounded-2xl border border-[#B95679]/15 text-center">
+                <ShieldCheck className="w-5 h-5 text-emerald-600 mx-auto mb-1" />
+                <span className="text-xs font-bold text-[#201A1B] block">100% Offline</span>
+                <span className="text-[10px] text-gray-500 block">Local SQLite Only</span>
+              </div>
+
+              <div className="p-3 bg-[#FFF8F8] rounded-2xl border border-[#B95679]/15 text-center">
+                <Sparkles className="w-5 h-5 text-purple-600 mx-auto mb-1" />
+                <span className="text-xs font-bold text-[#201A1B] block">Zero Ads</span>
+                <span className="text-[10px] text-gray-500 block">No Data Monetization</span>
+              </div>
+
+              <div className="p-3 bg-[#FFF8F8] rounded-2xl border border-[#B95679]/15 text-center">
+                <Stethoscope className="w-5 h-5 text-[#B95679] mx-auto mb-1" />
+                <span className="text-xs font-bold text-[#201A1B] block">Clinical Clarity</span>
+                <span className="text-[10px] text-gray-500 block">Doctor-Ready Reports</span>
+              </div>
+
+              <div className="p-3 bg-[#FFF8F8] rounded-2xl border border-[#B95679]/15 text-center">
+                <Lock className="w-5 h-5 text-amber-600 mx-auto mb-1" />
+                <span className="text-xs font-bold text-[#201A1B] block">PIN & Biometric</span>
+                <span className="text-[10px] text-gray-500 block">Device-Level Lock</span>
+              </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-[#B95679]/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#B95679] to-[#9E4566] flex items-center justify-center text-white font-bold font-display text-lg shadow-md shrink-0">
-                  DD
+            {/* Team Signatures & Developer Cards */}
+            <div className="mt-8 pt-6 border-t border-[#B95679]/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="flex flex-wrap items-center gap-4">
+                {/* Tanvi Yadav */}
+                <div className="flex items-center gap-3 bg-[#FFF8F8] px-4 py-2.5 rounded-2xl border border-[#B95679]/20 shadow-xs">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#B95679] to-[#D87093] flex items-center justify-center text-white font-bold font-display text-sm shadow-xs shrink-0">
+                    TY
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#201A1B] text-xs sm:text-sm">Tanvi Yadav</h4>
+                    <p className="text-[10px] sm:text-xs text-[#B95679] font-semibold">Project Lead & UI/UX Architecture</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-[#201A1B] text-sm sm:text-base">Tanvi Yadav & Pranav</h4>
-                  <p className="text-xs text-[#B95679] font-semibold">Duo Developers • Lead Project Team</p>
+
+                {/* Pranav */}
+                <div className="flex items-center gap-3 bg-[#FFF8F8] px-4 py-2.5 rounded-2xl border border-[#B95679]/20 shadow-xs">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#16213E] to-[#201A1B] flex items-center justify-center text-white font-bold font-display text-sm shadow-xs shrink-0">
+                    P
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#201A1B] text-xs sm:text-sm">Pranav</h4>
+                    <p className="text-[10px] sm:text-xs text-[#B95679] font-semibold">Android Core & Database Engineering</p>
+                  </div>
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs bg-[#B95679]/10 text-[#B95679] px-3.5 py-1.5 rounded-full font-bold border border-[#B95679]/20 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" /> Crafted with Privacy & Care
-                </span>
+                <a
+                  href={GITHUB_REPO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs bg-white hover:bg-gray-50 text-[#16213E] px-4 py-2 rounded-full font-bold border border-gray-300 shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub Repository</span>
+                </a>
               </div>
             </div>
           </div>
