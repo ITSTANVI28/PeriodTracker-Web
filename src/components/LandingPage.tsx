@@ -504,7 +504,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
         doc.text("Patient Identifier: Anonymous #PT-9042", 14, 45);
         doc.text("Export Date: August 03, 2026", 14, 52);
         doc.text("App Build: CycleSync v1.0.1 Stable (Local SQLite Room DB)", 14, 59);
-        doc.text("Engineering Team: Duo Developers (Lead: Tanvi Yadav)", 14, 66);
+        doc.text("Engineering Team: Duo Developers (Tanvi Yadav & Pranav Patil)", 14, 66);
 
         doc.setDrawColor(232, 182, 203);
         doc.line(14, 72, 196, 72);
@@ -1556,7 +1556,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   <div>
                     <h3 className="text-base sm:text-lg font-bold text-white font-display">Duo Developers</h3>
                     <p className="text-[11px] sm:text-xs font-semibold text-[#E8B6CB] uppercase tracking-wider">
-                      Lead: Tanvi Yadav | Android Team
+                      Tanvi Yadav & Pranav Patil | Android Team
                     </p>
                   </div>
                 </div>
@@ -2071,7 +2071,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   प्रिय CycleSync परिवारास सप्रेम नमस्कार,
                 </p>
                 <p>
-                  आम्ही — <strong>तन्वी यादव</strong> आणि <strong>प्रणव</strong> (Duo Developers) — हे ॲप एकाच मुख्य प्रेरणेतून तयार केले: <strong>महिलांचे आरोग्य, प्रतिष्ठा आणि वैयक्तिक गोपनीयतेचे (100% Privacy) सर्वोच्च रक्षण करणे.</strong>
+                  आम्ही — <strong>तन्वी यादव</strong> आणि <strong>प्रणव पाटील</strong> (Duo Developers) — हे ॲप एकाच मुख्य प्रेरणेतून तयार केले: <strong>महिलांचे आरोग्य, प्रतिष्ठा आणि वैयक्तिक गोपनीयतेचे (100% Privacy) सर्वोच्च रक्षण करणे.</strong>
                 </p>
                 <p>
                   मासिक पाळी, ओव्ह्युलेशन सायकल आणि PCOD सारख्या लक्षणांची नोंद ही प्रत्येक महिलेसाठी अतिशय खाजगी आणि संवेदनशील बाब आहे. यासाठी कोणत्याही युजरला तिचा वैयक्तिक आरोग्य डेटा क्लाऊड सर्व्हर्सवर विकावा किंवा जाहिरात कंपन्यांशी शेअर करावा लागू नये, यावर आमचा ठाम विश्वास आहे.
@@ -2089,7 +2089,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   प्रिय CycleSync समुदाय,
                 </p>
                 <p>
-                  हमने — <strong>तन्वी यादव</strong> और <strong>प्रणव</strong> (Duo Developers) — इस ऐप का निर्माण महिलाओं के स्वास्थ्य, सम्मान और १००% गोपनीयता के संरक्षण हेतु किया है।
+                  हमने — <strong>तन्वी यादव</strong> और <strong>प्रणव पाटिल</strong> (Duo Developers) — इस ऐप का निर्माण महिलाओं के स्वास्थ्य, सम्मान और १००% गोपनीयता के संरक्षण हेतु किया है।
                 </p>
                 <p>
                   मासिक धर्म और स्वास्थ्य की जानकारी अत्यंत व्यक्तिगत होती है। हमारा दृढ़ विश्वास है कि पीरियड्स व PCOD ट्रैकिंग के लिए किसी को भी अपना डेटा किसी क्लाउड या विज्ञापन कंपनियों को साझा नहीं करना चाहिए।
@@ -2107,7 +2107,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   Dear CycleSync Community,
                 </p>
                 <p>
-                  We built <strong>CycleSync</strong> with a strong and uncompromising commitment to women's health, bodily dignity, and absolute privacy. Menstrual cycles, symptom logs, and PCOD screenings are deeply intimate — and we strongly believe that no user should ever have to trade their data privacy or be monetized by ad networks just to track their reproductive health.
+                  We — <strong>Tanvi Yadav</strong> and <strong>Pranav Patil</strong> (Duo Developers) — built <strong>CycleSync</strong> with a strong and uncompromising commitment to women's health, bodily dignity, and absolute privacy. Menstrual cycles, symptom logs, and PCOD screenings are deeply intimate — and we strongly believe that no user should ever have to trade their data privacy or be monetized by ad networks just to track their reproductive health.
                 </p>
                 <p>
                   That is why CycleSync is engineered to be <strong>100% offline</strong> with local SQLite/Room database storage directly on your Android device. <strong>Zero cloud servers, zero data harvesting, zero targeted advertising, and zero mandatory signups.</strong>
@@ -2162,13 +2162,13 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   </div>
                 </div>
 
-                {/* Pranav */}
+                {/* Pranav Patil */}
                 <div className="flex items-center gap-3 bg-[#FFF8F8] px-4 py-2.5 rounded-2xl border border-[#B95679]/20 shadow-xs">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#16213E] to-[#201A1B] flex items-center justify-center text-white font-bold font-display text-sm shadow-xs shrink-0">
-                    P
+                    PP
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#201A1B] text-xs sm:text-sm">Pranav</h4>
+                    <h4 className="font-extrabold text-[#201A1B] text-xs sm:text-sm">Pranav Patil</h4>
                     <p className="text-[10px] sm:text-xs text-[#B95679] font-semibold">Android Core & Database Engineering</p>
                   </div>
                 </div>
@@ -2666,7 +2666,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 <span className="text-base sm:text-lg font-bold font-display text-white">CycleSync</span>
               </div>
               <p className="text-[11px] sm:text-xs text-white/60">
-                Designed & Developed by <span className="text-[#E8B6CB] font-semibold">Duo Developers</span> | Lead: Tanvi Yadav & Pranav
+                Designed & Developed by <span className="text-[#E8B6CB] font-semibold">Duo Developers</span> | Lead: Tanvi Yadav & Pranav Patil
               </p>
             </div>
 

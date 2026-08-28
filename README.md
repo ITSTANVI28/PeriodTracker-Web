@@ -165,6 +165,15 @@ CycleSync is accessible across multiple languages with seamless one-click switch
 
 ---
 
+## 👥 Project Team (Duo Developers)
+
+CycleSync is conceptualized, designed, and engineered by **Duo Developers**:
+
+- 🌸 **Tanvi Yadav** — *Project Lead, UI/UX Architecture & Health Research*
+- 💻 **Pranav Patil** — *Android Core, Database Architecture & Cryptographic Security*
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
@@ -172,5 +181,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ---
 
 <div align="center">
-  <b>CycleSync</b> • Designed with 🌸 for Empowerment, Health & Privacy.
+  <b>CycleSync</b> • Designed & Maintained with 🌸 by <b>Tanvi Yadav & Pranav Patil (Duo Developers)</b>.
 </div>
