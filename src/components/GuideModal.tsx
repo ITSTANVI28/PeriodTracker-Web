@@ -140,7 +140,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({
           highlights: [
             "Doctor-Ready PDF Health Summary",
             "Direct Android APK v1.0.1 (Zero Play Store Bloat)",
-            "Duo Developers (Tanvi Yadav & Pranav Patil)"
+            "Lead Creator: Tanvi Yadav (Full-Stack Developer)"
           ],
           actionText: "Download Android APK",
           targetSection: "download-apk",
@@ -216,7 +216,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({
           highlights: [
             "डॉक्टर के लिए प्रिंटेबल पीडीएफ समरी",
             "डायरेक्ट एंड्रॉइड APK (v1.0.1)",
-            "Duo Developers (तन्वी यादव एवं प्रणव पाटिल)"
+            "निर्माता: तन्वी यादव (फुल-स्टॅक डेवलपर)"
           ],
           actionText: "APK डाउनलोड करें",
           targetSection: "download-apk",
@@ -292,7 +292,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({
           highlights: [
             "डॉक्टरांसाठी रेडीमेड PDF मेडिकल सारांश",
             "डायरेक्ट Android APK v1.0.1 डाऊनलोड",
-            "Duo Developers (तन्वी यादव आणि प्रणव पाटील)"
+            "निर्माती: तन्वी यादव (फुल-स्टॅक डेव्हलपर)"
           ],
           actionText: "APK डाऊनलोड करा",
           targetSection: "download-apk",
