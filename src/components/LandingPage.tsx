@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { GuideModal } from './GuideModal';
 import { 
   initAuthListener, 
   signInWithGoogle, 
@@ -30,6 +31,7 @@ import {
   Zap,
   ChevronDown,
   ChevronUp,
+  ChevronRight,
   Github,
   QrCode,
   Star,
@@ -306,6 +308,18 @@ export const LandingPage: React.FC = () => {
   const [toastMessage, setToastMessage] = useState('');
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [quickActionsOpen, setQuickActionsOpen] = useState(false);
+  const [guideModalOpen, setGuideModalOpen] = useState(false);
+
+  // Auto-open Welcome & Feature Guide modal on page load/refresh unless disabled
+  useEffect(() => {
+    const dontShow = localStorage.getItem('cyclesync_guide_dont_show');
+    if (dontShow !== 'true') {
+      const timer = setTimeout(() => {
+        setGuideModalOpen(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const handleIssueSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -626,8 +640,17 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             <a href="#faq" className="hover:text-[#B95679] transition-colors whitespace-nowrap">FAQ</a>
           </div>
 
-          {/* Desktop Action Button */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          {/* Desktop Action Button & Guide */}
+          <div className="hidden md:flex items-center gap-2.5 shrink-0">
+            <button
+              onClick={() => setGuideModalOpen(true)}
+              className="px-3.5 py-2 text-xs sm:text-sm font-bold bg-[#B95679]/10 hover:bg-[#B95679]/20 text-[#B95679] border border-[#B95679]/25 rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-xs whitespace-nowrap"
+              title="Open Welcome & Feature Guide"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{selectedLang === 'mr' ? '📖 ॲप गाईड' : selectedLang === 'hi' ? '📖 ऐप गाइड' : '📖 Guide Tour'}</span>
+            </button>
+
             <a 
               href={DIRECT_APK_DOWNLOAD_URL}
               download
@@ -676,6 +699,21 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 </button>
               </div>
             </div>
+
+            {/* In-Drawer Quick Guide Button */}
+            <button
+              onClick={() => {
+                setGuideModalOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center justify-between p-3 rounded-2xl bg-[#FFF8F8] text-[#B95679] border border-[#B95679]/30 text-xs font-bold active:scale-95 transition-all shadow-xs"
+            >
+              <span className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 fill-[#B95679]/20" />
+                <span>{selectedLang === 'mr' ? '📖 ॲप मार्गदर्शक गाईड टूर' : selectedLang === 'hi' ? '📖 ऐप मार्गदर्शक टूर' : '📖 Interactive App Guide Tour'}</span>
+              </span>
+              <ChevronRight className="w-4 h-4 text-[#B95679]" />
+            </button>
 
             <div className="grid grid-cols-2 gap-2 text-xs font-bold text-[#201A1B]/85">
               <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-[#FFF8F8] border border-[#B95679]/15 rounded-xl text-[#B95679] flex items-center gap-2 active:scale-95">
@@ -2633,6 +2671,23 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 <div className="text-[10px] text-white/60">100% Offline SQLite</div>
               </div>
             </button>
+
+            {/* Menu Item 4: Interactive Guide */}
+            <button
+              onClick={() => {
+                setGuideModalOpen(true);
+                setQuickActionsOpen(false);
+              }}
+              className="w-full text-left flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer active:scale-95"
+            >
+              <div className="p-2 rounded-lg bg-[#B95679]/20 text-[#E8B6CB] group-hover:bg-[#B95679] group-hover:text-white transition-colors">
+                <Sparkles className="w-4 h-4 text-[#E8B6CB] group-hover:text-white fill-[#E8B6CB]/20" />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-white group-hover:text-[#E8B6CB] transition-colors">Interactive Guide</div>
+                <div className="text-[10px] text-white/60">4-Step Onboarding Tour</div>
+              </div>
+            </button>
           </div>
         )}
 
@@ -2689,6 +2744,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
           </div>
         </div>
       </footer>
+
+      {/* Interactive Welcome & Feature Guide Modal */}
+      <GuideModal
+        isOpen={guideModalOpen}
+        onClose={() => setGuideModalOpen(false)}
+        selectedLang={selectedLang}
+        onLanguageChange={setSelectedLang}
+      />
     </div>
   );
 };
