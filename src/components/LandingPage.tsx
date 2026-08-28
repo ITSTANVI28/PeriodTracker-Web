@@ -193,29 +193,29 @@ export const KeyFeatures: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-20 bg-white border-t border-[#B95679]/10 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-12 sm:py-20 bg-white border-t border-[#B95679]/10 relative">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4 px-2 sm:px-0"
         >
-          <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 shadow-sm">
+          <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#B95679]" /> Core Capabilities
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#201A1B] tracking-tight leading-tight">
             Key Features
           </h2>
-          <p className="text-base sm:text-lg text-[#201A1B]/70 leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-[#201A1B]/70 leading-relaxed">
             Engineered for privacy, clinical precision, and everyday simplicity — empowering you with total ownership of your menstrual health offline.
           </p>
         </motion.div>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {featureList.map((feat, index) => {
             const IconComponent = feat.icon;
             return (
@@ -225,27 +225,27 @@ export const KeyFeatures: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: (index % 4) * 0.1, ease: "easeOut" }}
-                className="bg-gradient-to-br from-[#FFF8F8] to-[#FFF0F3] p-7 rounded-3xl border border-[#B95679]/15 hover:border-[#B95679]/40 transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl group flex flex-col justify-between"
+                className="bg-gradient-to-br from-[#FFF8F8] to-[#FFF0F3] p-5 sm:p-7 rounded-3xl border border-[#B95679]/15 hover:border-[#B95679]/40 transition-all duration-300 hover:-translate-y-1.5 active:scale-[0.98] shadow-xs hover:shadow-xl group flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className={`w-12 h-12 rounded-2xl ${feat.iconBg} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
-                      <IconComponent className="w-6 h-6" />
+                  <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl ${feat.iconBg} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
+                      <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span className={`px-2.5 py-1 text-[11px] font-extrabold rounded-full border ${feat.badgeColor}`}>
+                    <span className={`px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-extrabold rounded-full border ${feat.badgeColor}`}>
                       {feat.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold font-display text-[#201A1B] mb-2 group-hover:text-[#B95679] transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold font-display text-[#201A1B] mb-2 group-hover:text-[#B95679] transition-colors leading-snug">
                     {feat.title}
                   </h3>
-                  <p className="text-sm text-[#201A1B]/70 leading-relaxed mb-6 font-normal">
+                  <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed mb-4 sm:mb-6 font-normal">
                     {feat.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#B95679]/10 space-y-1.5">
+                <div className="pt-3.5 sm:pt-4 border-t border-[#B95679]/10 space-y-1.5">
                   {feat.highlights.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-[#201A1B]/80">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#B95679] shrink-0" />
@@ -649,46 +649,63 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
         {/* Mobile Nav Slide-in Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-b border-[#B95679]/10 px-6 py-6 space-y-4 animate-in slide-in-from-top duration-200 shadow-xl">
+          <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-[#B95679]/15 px-4 sm:px-6 py-5 space-y-4 animate-in slide-in-from-top duration-200 shadow-2xl">
             {/* Language Toggle Mobile */}
-            <div className="flex items-center justify-between pb-2 border-b border-gray-100">
-              <span className="text-xs font-bold text-gray-500">Language:</span>
-              <div className="flex items-center bg-gray-100 p-1 rounded-full text-xs font-bold">
-                <button onClick={() => setSelectedLang('en')} className={`px-3 py-1 rounded-full ${selectedLang === 'en' ? 'bg-[#B95679] text-white' : 'text-gray-600'}`}>EN</button>
-                <button onClick={() => setSelectedLang('hi')} className={`px-3 py-1 rounded-full ${selectedLang === 'hi' ? 'bg-[#B95679] text-white' : 'text-gray-600'}`}>हिन्दी</button>
-                <button onClick={() => setSelectedLang('mr')} className={`px-3 py-1 rounded-full ${selectedLang === 'mr' ? 'bg-[#B95679] text-white' : 'text-gray-600'}`}>मराठी</button>
+            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-2xl border border-gray-100">
+              <span className="text-xs font-bold text-[#16213E] flex items-center gap-1.5">
+                <Globe className="w-3.5 h-3.5 text-[#B95679]" /> Language:
+              </span>
+              <div className="flex items-center bg-white p-1 rounded-xl shadow-xs border border-gray-200 text-xs font-bold gap-1">
+                <button 
+                  onClick={() => setSelectedLang('en')} 
+                  className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 ${selectedLang === 'en' ? 'bg-[#B95679] text-white shadow-xs' : 'text-gray-600 hover:text-[#B95679]'}`}
+                >
+                  EN
+                </button>
+                <button 
+                  onClick={() => setSelectedLang('hi')} 
+                  className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 ${selectedLang === 'hi' ? 'bg-[#B95679] text-white shadow-xs' : 'text-gray-600 hover:text-[#B95679]'}`}
+                >
+                  हिन्दी
+                </button>
+                <button 
+                  onClick={() => setSelectedLang('mr')} 
+                  className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 ${selectedLang === 'mr' ? 'bg-[#B95679] text-white shadow-xs' : 'text-gray-600 hover:text-[#B95679]'}`}
+                >
+                  मराठी
+                </button>
               </div>
             </div>
 
-            <div className="flex flex-col space-y-3 font-semibold text-[#201A1B]/80">
-              <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="text-[#B95679] font-bold py-1">Quick Calculator</a>
-              <a href="#features" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1">Features</a>
-              <a href="#privacy" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1">Privacy First</a>
-              <a href="#download" onClick={() => setMobileMenuOpen(false)} className="text-[#B95679] font-bold py-1">Download APK</a>
-              <a href="#pdf-report" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1">PDF Medical Report</a>
-              <a href="#issues" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1 text-[#B95679] font-bold flex items-center gap-1.5">
-                <Bug className="w-4 h-4" /> Report Issue to GitHub
+            <div className="grid grid-cols-2 gap-2 text-xs font-bold text-[#201A1B]/85">
+              <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-[#FFF8F8] border border-[#B95679]/15 rounded-xl text-[#B95679] flex items-center gap-2 active:scale-95">
+                <Calculator className="w-4 h-4" /> Quick Calculator
               </a>
-              <a href="#team-note" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1 text-[#B95679] font-bold flex items-center gap-1.5">
-                <Heart className="w-4 h-4 fill-[#B95679]" /> Note from Duo Developers
+              <a href="#features" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
+                <Sparkles className="w-4 h-4 text-[#B95679]" /> Features
               </a>
-              <a href="#devlog" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1 flex items-center justify-between">
-                <span>Developer Log</span>
-                <span className="px-2 py-0.5 text-[10px] bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">Timeline</span>
+              <a href="#privacy" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" /> Privacy First
               </a>
-              <a href="#planned-features" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1 text-[#B95679] font-bold flex items-center gap-1.5">
-                <Rocket className="w-4 h-4" /> Planned Features 🚀
+              <a href="#pdf-report" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
+                <FileText className="w-4 h-4 text-indigo-600" /> PDF Report
               </a>
-              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#B95679] py-1">FAQ</a>
+              <a href="#issues" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl text-[#B95679] flex items-center gap-2 active:scale-95">
+                <Bug className="w-4 h-4" /> Report Issue
+              </a>
+              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
+                <Info className="w-4 h-4 text-amber-600" /> FAQs
+              </a>
             </div>
-            <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
+
+            <div className="pt-2">
               <a 
                 href={DIRECT_APK_DOWNLOAD_URL}
                 download
-                className="w-full py-3 text-center text-sm font-bold text-white bg-gradient-to-r from-[#B95679] to-[#9E4566] rounded-xl shadow-md flex items-center justify-center gap-2"
+                className="w-full py-3.5 text-center text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-[#B95679] to-[#9E4566] rounded-2xl shadow-lg shadow-[#B95679]/25 flex items-center justify-center gap-2 active:scale-95 transition-transform"
               >
                 <Download className="w-4 h-4" />
-                Download Android App 📱
+                Download Android APK 📱
               </a>
             </div>
           </div>
@@ -696,17 +713,17 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </nav>
 
       {/* 2. Hero Section */}
-      <section className="relative py-12 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <section className="relative py-8 sm:py-12 lg:py-20 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Column */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] text-xs sm:text-sm font-bold tracking-wide border border-[#B95679]/20 shadow-xs">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+              <div className="inline-flex items-center px-3 sm:px-4 py-1 rounded-full bg-[#B95679]/10 text-[#B95679] text-xs font-bold tracking-wide border border-[#B95679]/20 shadow-xs">
                 {t.badge}
               </div>
 
               {/* 100% Ad-Free Visual Tag */}
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-800 border border-purple-500/30 text-xs sm:text-sm font-bold shadow-xs">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 text-purple-800 border border-purple-500/30 text-xs font-bold shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-purple-600 shrink-0" />
                 <span>100% Ad-Free</span>
               </div>
@@ -714,47 +731,47 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               {/* 100% Private Visual Badge Button */}
               <button
                 onClick={() => setPrivacyModalOpen(true)}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 border border-emerald-500/30 text-xs sm:text-sm font-bold transition-all shadow-xs cursor-pointer group hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 border border-emerald-500/30 text-xs font-bold transition-all shadow-xs cursor-pointer group active:scale-95"
                 title="Click to view local-only data storage policy details"
                 aria-label="Open 100% Private Local Data Storage Policy"
               >
-                <ShieldCheck className="w-4 h-4 text-emerald-600 group-hover:scale-110 transition-transform" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span>100% Private</span>
-                <span className="text-[10px] bg-emerald-500/20 text-emerald-900 px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider border border-emerald-500/30">
-                  Storage Policy 🛡️
+                <span className="text-[9px] bg-emerald-500/20 text-emerald-900 px-1.5 py-0.5 rounded-full font-extrabold uppercase">
+                  Policy 🛡️
                 </span>
               </button>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display leading-tight text-[#201A1B] tracking-tight my-4">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-display leading-tight text-[#201A1B] tracking-tight my-2 sm:my-4">
               {t.heroTitle.split(" ")[0]} {' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B95679] via-[#D87093] to-[#E8B6CB]">
                 {t.heroTitle.split(" ").slice(1).join(" ")}
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-[#201A1B]/75 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal mb-6">
+            <p className="text-sm sm:text-base lg:text-lg text-[#201A1B]/75 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal mb-4 sm:mb-6 px-1 sm:px-0">
               {t.heroSub}
             </p>
 
             {/* Main CTA Buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
               <a 
                 href={DIRECT_APK_DOWNLOAD_URL}
                 download
-                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-[#B95679]/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-2xl font-bold text-sm sm:text-base shadow-xl shadow-[#B95679]/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
               >
                 <span>Download Android App 📱</span>
-                <Download className="w-5 h-5" />
+                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
 
               <a 
                 href={GITHUB_REPO_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto px-7 py-4 border-2 border-[#201A1B]/15 hover:border-[#B95679] rounded-2xl font-bold text-base sm:text-lg text-[#201A1B] hover:text-[#B95679] flex items-center justify-center gap-2 transition-all hover:bg-white/60"
+                className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 border-2 border-[#201A1B]/15 hover:border-[#B95679] rounded-2xl font-bold text-sm sm:text-base text-[#201A1B] hover:text-[#B95679] flex items-center justify-center gap-2 transition-all hover:bg-white/60 active:scale-95"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>GitHub Source</span>
               </a>
 
@@ -762,121 +779,117 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             </div>
 
             {/* Subtext */}
-            <p className="text-xs sm:text-sm font-semibold text-[#201A1B]/60 pt-1">
+            <p className="text-[11px] sm:text-xs font-semibold text-[#201A1B]/60 pt-0.5">
               Android 7.0+ • 100% Free & Offline • No Ads
             </p>
 
             {/* Badges */}
-            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 text-xs sm:text-sm font-semibold text-[#201A1B]/70">
-              <span className="flex items-center gap-1.5 text-purple-900 font-bold bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20">
-                <Sparkles className="w-4 h-4 text-purple-600" /> 100% Ad-Free
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-[#201A1B]/70">
+              <span className="flex items-center gap-1 text-purple-900 font-bold bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20">
+                <Sparkles className="w-3.5 h-3.5 text-purple-600" /> 100% Ad-Free
               </span>
-              <span className="w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
+              <span className="hidden sm:inline w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
               <button 
                 onClick={() => setPrivacyModalOpen(true)}
-                className="flex items-center gap-1.5 hover:text-[#B95679] transition-colors cursor-pointer group"
+                className="flex items-center gap-1 hover:text-[#B95679] transition-colors cursor-pointer group bg-white/70 sm:bg-transparent px-2 sm:px-0 py-0.5 sm:py-0 rounded-lg"
                 title="View local-only data storage policy"
               >
-                <Lock className="w-4 h-4 text-[#B95679] group-hover:scale-110 transition-transform" /> 
+                <Lock className="w-3.5 h-3.5 text-[#B95679]" /> 
                 <span>No Account Needed</span>
               </button>
-              <span className="w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
+              <span className="hidden sm:inline w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
               <button 
                 onClick={() => setPrivacyModalOpen(true)}
-                className="flex items-center gap-1.5 hover:text-[#B95679] transition-colors cursor-pointer group"
+                className="flex items-center gap-1 hover:text-[#B95679] transition-colors cursor-pointer group bg-white/70 sm:bg-transparent px-2 sm:px-0 py-0.5 sm:py-0 rounded-lg"
                 title="View local-only data storage policy"
               >
-                <ShieldCheck className="w-4 h-4 text-[#B95679] group-hover:scale-110 transition-transform" /> 
-                <span>Zero Cloud Data Collection</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-[#B95679]" /> 
+                <span>Zero Cloud Data</span>
               </button>
-              <span className="w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
-              <span className="flex items-center gap-1.5">
-                <UserCheck className="w-4 h-4 text-[#B95679]" /> Duo Developers (Lead: Tanvi Yadav)
-              </span>
             </div>
           </div>
 
           {/* Right Column: Floating CSS Mobile Phone Mockup showing Android App UI */}
-          <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="absolute w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-[#B95679]/20 rounded-full blur-[90px] pointer-events-none animate-pulse-glow"></div>
+          <div className="lg:col-span-5 relative flex justify-center items-center px-2 sm:px-0">
+            <div className="absolute w-[240px] sm:w-[360px] h-[240px] sm:h-[360px] bg-[#B95679]/20 rounded-full blur-[80px] pointer-events-none animate-pulse-glow"></div>
 
-            <div className="relative w-[280px] sm:w-[320px] h-[580px] sm:h-[620px] bg-[#16213E] rounded-[48px] border-[10px] border-[#0D0D1A] shadow-2xl shadow-[#16213E]/40 overflow-hidden flex flex-col animate-float z-10">
+            <div className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[320px] h-[500px] sm:h-[580px] bg-[#16213E] rounded-[40px] sm:rounded-[48px] border-[6px] sm:border-[8px] border-[#0D0D1A] shadow-2xl shadow-[#16213E]/40 overflow-hidden flex flex-col animate-float z-10">
               {/* Phone Status Bar */}
-              <div className="h-7 bg-[#16213E] flex justify-between items-center px-8 pt-2">
-                <span className="text-[11px] text-white font-bold tracking-tight">9:41</span>
-                <div className="w-16 h-4 bg-[#0D0D1A] rounded-full mx-auto -mt-2"></div>
+              <div className="h-6 sm:h-7 bg-[#16213E] flex justify-between items-center px-6 sm:px-8 pt-1.5 sm:pt-2">
+                <span className="text-[10px] sm:text-[11px] text-white font-bold tracking-tight">9:41</span>
+                <div className="w-12 sm:w-16 h-3.5 sm:h-4 bg-[#0D0D1A] rounded-full mx-auto -mt-1.5 sm:-mt-2"></div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2.5 h-2.5 border border-white/60 rounded-full"></div>
-                  <div className="w-2.5 h-2.5 bg-white/60 rounded-full"></div>
+                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 border border-white/60 rounded-full"></div>
+                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-white/60 rounded-full"></div>
                 </div>
               </div>
 
               {/* Screen Content inside Phone */}
-              <div className="p-5 flex-1 bg-white rounded-t-[36px] mt-3 flex flex-col justify-between overflow-hidden">
-                <div className="space-y-4">
-                  <div className="w-12 h-1 bg-gray-200 rounded-full mx-auto"></div>
+              <div className="p-3.5 sm:p-5 flex-1 bg-white rounded-t-[30px] sm:rounded-t-[36px] mt-2 sm:mt-3 flex flex-col justify-between overflow-hidden">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto"></div>
                   
                   <div className="flex justify-between items-center">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Android Dashboard</span>
-                      <h4 className="text-base font-bold text-[#16213E]">My Cycle Status</h4>
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-400">Android Dashboard</span>
+                      <h4 className="text-sm sm:text-base font-bold text-[#16213E]">My Cycle Status</h4>
                     </div>
-                    <span className="text-[10px] px-2.5 py-1 bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">Luteal Phase</span>
+                    <span className="text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">Luteal Phase</span>
                   </div>
 
                   {/* Period Countdown Card */}
-                  <div className="p-5 bg-gradient-to-br from-[#FFF8F8] to-[#FFF0F3] rounded-3xl border border-[#B95679]/15 text-center shadow-sm relative overflow-hidden">
+                  <div className="p-3.5 sm:p-5 bg-gradient-to-br from-[#FFF8F8] to-[#FFF0F3] rounded-2xl sm:rounded-3xl border border-[#B95679]/15 text-center shadow-xs relative overflow-hidden">
                     <img 
                       src="/ic_launcher-playstore-removebg-preview.png" 
                       alt="Logo" 
-                      className="absolute top-2 right-2 w-7 h-7 opacity-30 object-contain" 
+                      className="absolute top-2 right-2 w-6 h-6 opacity-30 object-contain" 
                     />
-                    <p className="text-[10px] uppercase tracking-widest text-[#B95679] font-bold mb-1">Period Countdown</p>
-                    <h3 className="text-4xl font-extrabold font-display text-[#16213E] mb-1">12 Days</h3>
-                    <p className="text-xs text-[#16213E]/70 font-medium">until next predicted period</p>
-                    <div className="mt-3 pt-3 border-t border-[#B95679]/10 flex justify-around text-[10px] font-bold text-gray-500">
+                    <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#B95679] font-bold mb-0.5">Period Countdown</p>
+                    <h3 className="text-2xl sm:text-4xl font-extrabold font-display text-[#16213E] mb-0.5">12 Days</h3>
+                    <p className="text-[11px] sm:text-xs text-[#16213E]/70 font-medium">until next predicted period</p>
+                    <div className="mt-2.5 pt-2 sm:mt-3 sm:pt-3 border-t border-[#B95679]/10 flex justify-around text-[9px] sm:text-[10px] font-bold text-gray-500">
                       <span>Cycle: 28d</span>
                       <span>Period: 5d</span>
                     </div>
                   </div>
 
                   {/* Cycle Calendar Preview */}
-                  <div className="p-3 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div className="flex justify-between text-[10px] font-bold text-gray-400 mb-2">
+                  <div className="p-2 sm:p-3 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-100">
+                    <div className="flex justify-between text-[9px] sm:text-[10px] font-bold text-gray-400 mb-1.5">
                       <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
                     </div>
-                    <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold">
-                      <span className="p-1 rounded-full text-gray-400">12</span>
-                      <span className="p-1 rounded-full text-gray-400">13</span>
-                      <span className="p-1 rounded-full bg-[#B95679] text-white font-bold">14</span>
-                      <span className="p-1 rounded-full bg-[#B95679]/20 text-[#B95679]">15</span>
-                      <span className="p-1 rounded-full bg-[#B95679]/20 text-[#B95679]">16</span>
-                      <span className="p-1 rounded-full text-gray-600">17</span>
-                      <span className="p-1 rounded-full bg-amber-500/20 text-amber-700">18</span>
+                    <div className="grid grid-cols-7 gap-1 text-center text-[10px] sm:text-xs font-semibold">
+                      <span className="p-0.5 rounded-full text-gray-400">12</span>
+                      <span className="p-0.5 rounded-full text-gray-400">13</span>
+                      <span className="p-0.5 rounded-full bg-[#B95679] text-white font-bold">14</span>
+                      <span className="p-0.5 rounded-full bg-[#B95679]/20 text-[#B95679]">15</span>
+                      <span className="p-0.5 rounded-full bg-[#B95679]/20 text-[#B95679]">16</span>
+                      <span className="p-0.5 rounded-full text-gray-600">17</span>
+                      <span className="p-0.5 rounded-full bg-amber-500/20 text-amber-700">18</span>
                     </div>
                   </div>
 
                   {/* Quick Action Mockup Buttons */}
-                  <div className="grid grid-cols-2 gap-2.5">
-                    <div className="p-3 bg-[#B95679] text-white rounded-2xl text-center shadow-md shadow-[#B95679]/20">
-                      <span className="text-lg block">🩸</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider">Log Period</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-2 sm:p-2.5 bg-[#B95679] text-white rounded-xl text-center shadow-xs">
+                      <span className="text-base block">🩸</span>
+                      <span className="text-[9px] font-bold uppercase tracking-wider">Log Period</span>
                     </div>
-                    <div className="p-3 bg-[#16213E] text-white rounded-2xl text-center shadow-md">
-                      <span className="text-lg block">🩺</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider">PCOD Quiz</span>
+                    <div className="p-2 sm:p-2.5 bg-[#16213E] text-white rounded-xl text-center shadow-xs">
+                      <span className="text-base block">🩺</span>
+                      <span className="text-[9px] font-bold uppercase tracking-wider">PCOD Quiz</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="py-2.5 text-[11px] font-bold text-[#B95679] bg-[#B95679]/10 rounded-xl text-center">
-                  📱 Official Android Native App Preview
+                <div className="py-1.5 sm:py-2 text-[10px] font-bold text-[#B95679] bg-[#B95679]/10 rounded-lg sm:rounded-xl text-center mt-2">
+                  📱 Android Native App Preview
                 </div>
               </div>
 
               {/* Bottom Phone Bar */}
-              <div className="h-5 bg-white flex justify-center items-center pb-1">
-                <div className="w-28 h-1 bg-gray-300 rounded-full"></div>
+              <div className="h-4 sm:h-5 bg-white flex justify-center items-center pb-1">
+                <div className="w-20 sm:w-28 h-1 bg-gray-300 rounded-full"></div>
               </div>
             </div>
           </div>
@@ -1049,82 +1062,100 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* NEW SECTION 3: 🛡️ PRIVACY COMPARISON CARD */}
-      <section className="py-20 bg-[#16213E] text-white border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest inline-block mb-3">
+      <section className="py-12 sm:py-20 bg-[#16213E] text-white border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <span className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-block mb-2 sm:mb-3">
               COMMERCIAL VS PRIVACY-FIRST
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white leading-tight mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white leading-tight mb-2 sm:mb-3">
               Why CycleSync is Different
             </h2>
-            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+            <p className="text-xs sm:text-base text-white/70 leading-relaxed px-2">
               See how CycleSync protects your intimate health records compared to standard commercial apps.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[600px]">
+          {/* Mobile Swipe Hint */}
+          <div className="flex sm:hidden items-center justify-between text-[11px] text-[#E8B6CB] mb-2.5 px-2 bg-white/5 py-1.5 rounded-xl border border-white/10">
+            <span className="flex items-center gap-1 font-bold">
+              👉 Swipe table horizontally
+            </span>
+            <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">100% Offline</span>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] shadow-2xl">
+            <table className="w-full text-left border-collapse min-w-[540px] sm:min-w-[600px]">
               <thead>
-                <tr className="border-b border-white/10 text-xs font-extrabold uppercase tracking-widest text-[#E8B6CB]">
-                  <th className="py-4 px-6">Feature / Security Standard</th>
-                  <th className="py-4 px-6 bg-red-500/10 text-red-300 rounded-t-2xl">Commercial Period Apps</th>
-                  <th className="py-4 px-6 bg-[#B95679]/20 text-emerald-300 rounded-t-2xl border-2 border-[#B95679]/50">CycleSync (Duo Developers)</th>
+                <tr className="border-b border-white/10 text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-[#E8B6CB]">
+                  <th className="py-3.5 px-4 sm:py-4 sm:px-6">Feature / Security Standard</th>
+                  <th className="py-3.5 px-4 sm:py-4 sm:px-6 bg-red-500/10 text-red-300 rounded-t-xl sm:rounded-t-2xl">Commercial Apps</th>
+                  <th className="py-3.5 px-4 sm:py-4 sm:px-6 bg-[#B95679]/25 text-emerald-300 rounded-t-xl sm:rounded-t-2xl border-2 border-[#B95679]/50">CycleSync</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-sm font-medium text-white/90">
+              <tbody className="divide-y divide-white/5 text-xs sm:text-sm font-medium text-white/90">
                 <tr>
-                  <td className="py-4 px-6 font-semibold">Data Storage Location</td>
-                  <td className="py-4 px-6 bg-red-500/5 text-red-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Cloud Servers (Vulnerable to Leaks)
-                  </td>
-                  <td className="py-4 px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 font-semibold">Data Storage Location</td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-red-500/5 text-red-300">
                     <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> 100% Offline Local SQLite/Room DB
+                      <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Cloud Servers (Vulnerable)
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> 100% Offline SQLite
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-6 font-semibold">Data Monetization & Ad Tracking</td>
-                  <td className="py-4 px-6 bg-red-500/5 text-red-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Sells Data & Targeted Ad SDKs
-                  </td>
-                  <td className="py-4 px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 font-semibold">Data Monetization & Ads</td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-red-500/5 text-red-300">
                     <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Zero Data Collection & Ad-Free
+                      <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Sells Data & Targeted Ads
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Zero Data Selling & Ad-Free
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-6 font-semibold">User Registration Requirement</td>
-                  <td className="py-4 px-6 bg-red-500/5 text-red-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Mandatory Account / Email Signup
-                  </td>
-                  <td className="py-4 px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 font-semibold">Account Requirement</td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-red-500/5 text-red-300">
                     <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> No Login / No Account Needed
+                      <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Mandatory Signup
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> No Account Needed
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-6 font-semibold">Subscription & Hidden Paywalls</td>
-                  <td className="py-4 px-6 bg-red-500/5 text-red-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Monthly Subscriptions & Paywalls
-                  </td>
-                  <td className="py-4 px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 font-semibold">Hidden Paywalls & Pricing</td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-red-500/5 text-red-300">
                     <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> 100% Free & Open Source
+                      <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Monthly Subscriptions
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-[#B95679]/30">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> 100% Free & Open
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-6 font-semibold">App Security Protection</td>
-                  <td className="py-4 px-6 bg-red-500/5 text-red-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Basic Password / None
-                  </td>
-                  <td className="py-4 px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-b-2 border-[#B95679]/30 rounded-b-2xl">
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 font-semibold">App Security Lock</td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-red-500/5 text-red-300">
                     <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> PIN Lock + Biometric Fingerprint
+                      <XCircle className="w-4 h-4 text-red-400 shrink-0" /> Basic / None
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 sm:py-4 sm:px-6 bg-[#B95679]/10 text-emerald-300 font-bold border-x-2 border-b-2 border-[#B95679]/30 rounded-b-xl sm:rounded-b-2xl">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> PIN & Fingerprint Lock
                     </div>
                   </td>
                 </tr>
@@ -1135,43 +1166,43 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* 4. 📲 DIRECT DOWNLOAD & SCAN SECTION (DARK BACKGROUND #1A1A2E) */}
-      <section id="download" className="py-20 bg-[#1A1A2E] text-white relative border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="download" className="py-12 sm:py-20 bg-[#1A1A2E] text-white relative border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           
           {/* Section Heading */}
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest inline-block mb-3">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <span className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-block mb-2 sm:mb-3">
               📲 GET THE APK DIRECTLY
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight leading-tight mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white tracking-tight leading-tight mb-2 sm:mb-3">
               Direct Download & Scan
             </h2>
-            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+            <p className="text-xs sm:text-base text-white/70 leading-relaxed px-2">
               Select your phone architecture or scan the QR code to install the latest CycleSync Android APK.
             </p>
           </div>
 
           {/* Side-by-Side Dark Cards Container (#16213E) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
             
             {/* LEFT CARD: DIRECT DOWNLOAD (Architecture Selector) */}
-            <div className="lg:col-span-7 bg-[#16213E] rounded-3xl p-6 sm:p-8 border border-[#B95679]/30 shadow-2xl flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 bg-[#16213E] rounded-3xl p-4 sm:p-8 border border-[#B95679]/30 shadow-2xl flex flex-col justify-between space-y-5 sm:space-y-6">
               <div>
                 {/* Header Badge */}
-                <div className="inline-block px-4 py-1.5 rounded-full bg-white text-[#16213E] text-xs font-extrabold uppercase tracking-wider shadow-md mb-6">
+                <div className="inline-block px-3.5 sm:px-4 py-1.5 rounded-full bg-white text-[#16213E] text-[11px] sm:text-xs font-extrabold uppercase tracking-wider shadow-md mb-4 sm:mb-6">
                   DIRECT DOWNLOAD
                 </div>
 
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white flex items-center gap-2 leading-snug">
-                    <Cpu className="w-5 h-5 text-[#B95679]" />
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <h3 className="text-base sm:text-xl font-bold text-white flex items-center gap-2 leading-snug">
+                    <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-[#B95679]" />
                     Select Device Architecture
                   </h3>
-                  <span className="text-xs text-[#E8B6CB] font-mono">v1.0.1 Stable</span>
+                  <span className="text-[11px] sm:text-xs text-[#E8B6CB] font-mono">v1.0.1 Stable</span>
                 </div>
 
                 {/* Radio Selection Options */}
-                <div className="space-y-3">
+                <div className="space-y-2.5 sm:space-y-3">
                   {(Object.keys(archDetails) as Array<keyof typeof archDetails>).map((key) => {
                     const isSelected = selectedArch === key;
                     const item = archDetails[key];
@@ -1180,27 +1211,27 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                       <label 
                         key={key}
                         onClick={() => setSelectedArch(key)}
-                        className={`flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all border ${
+                        className={`flex items-center justify-between p-3.5 sm:p-4 rounded-2xl cursor-pointer transition-all border active:scale-[0.98] ${
                           isSelected 
                             ? 'bg-white text-[#16213E] border-white shadow-lg font-bold' 
                             : 'bg-white/5 text-white border-white/10 hover:bg-white/10 hover:border-white/20'
                         }`}
                       >
-                        <div className="flex items-center gap-3">
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                        <div className="flex items-center gap-2.5 sm:gap-3">
+                          <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 flex items-center justify-center ${
                             isSelected ? 'border-[#B95679] bg-[#B95679]' : 'border-white/40'
                           }`}>
-                            {isSelected && <div className="w-2 h-2 rounded-full bg-white"></div>}
+                            {isSelected && <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white"></div>}
                           </div>
                           <div>
-                            <span className="text-sm block">{item.name}</span>
-                            <span className={`text-[11px] block font-normal ${isSelected ? 'text-gray-600' : 'text-white/50'}`}>
+                            <span className="text-xs sm:text-sm block">{item.name}</span>
+                            <span className={`text-[10px] sm:text-[11px] block font-normal ${isSelected ? 'text-gray-600' : 'text-white/50'}`}>
                               {item.tag}
                             </span>
                           </div>
                         </div>
 
-                        <span className={`text-xs font-mono font-bold ${isSelected ? 'text-[#B95679]' : 'text-[#E8B6CB]'}`}>
+                        <span className={`text-[11px] sm:text-xs font-mono font-bold ${isSelected ? 'text-[#B95679]' : 'text-[#E8B6CB]'}`}>
                           {item.size}
                         </span>
                       </label>
@@ -1210,18 +1241,18 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               </div>
 
               {/* Download Action Button & Support Footer */}
-              <div className="space-y-4 pt-4 border-t border-white/10">
+              <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-white/10">
                 <a 
                   href={DIRECT_APK_DOWNLOAD_URL}
                   download
-                  className="w-full py-4 bg-white text-[#16213E] hover:bg-gray-100 rounded-full font-extrabold text-base sm:text-lg shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer"
+                  className="w-full py-3.5 sm:py-4 bg-white text-[#16213E] hover:bg-gray-100 rounded-2xl sm:rounded-full font-extrabold text-sm sm:text-lg shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer text-center"
                 >
                   <span>📥 DOWNLOAD APK ({archDetails[selectedArch].size})</span>
                 </a>
 
                 {/* Support Developer Footer */}
-                <div className="pt-2 text-center space-y-2">
-                  <p className="text-xs font-bold text-[#E8B6CB] uppercase tracking-widest">
+                <div className="pt-1 sm:pt-2 text-center space-y-2">
+                  <p className="text-[10px] sm:text-xs font-bold text-[#E8B6CB] uppercase tracking-widest">
                     LOVE THE APP? SUPPORT DUO DEVELOPERS!
                   </p>
 
@@ -1229,9 +1260,9 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                     href={GITHUB_REPO_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white text-xs font-extrabold hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
+                    className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white text-[11px] sm:text-xs font-extrabold hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
                   >
-                    <Star className="w-4 h-4 fill-amber-300 text-amber-300" />
+                    <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-300 text-amber-300" />
                     <span>⭐ STAR ON GITHUB</span>
                   </a>
                 </div>
@@ -1239,42 +1270,42 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             </div>
 
             {/* RIGHT CARD: SCAN TO DOWNLOAD (QR Code Panel) */}
-            <div className="lg:col-span-5 bg-[#16213E] rounded-3xl p-6 sm:p-8 border border-[#B95679]/30 shadow-2xl flex flex-col items-center justify-between text-center space-y-6">
-              <div className="space-y-4 w-full flex flex-col items-center">
+            <div className="lg:col-span-5 bg-[#16213E] rounded-3xl p-5 sm:p-8 border border-[#B95679]/30 shadow-2xl flex flex-col items-center justify-between text-center space-y-4 sm:space-y-6">
+              <div className="space-y-3 sm:space-y-4 w-full flex flex-col items-center">
                 {/* QR Icon Circle */}
-                <div className="w-14 h-14 rounded-2xl bg-[#B95679]/20 border border-[#B95679]/40 flex items-center justify-center text-[#E8B6CB]">
-                  <QrCode className="w-7 h-7" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679]/20 border border-[#B95679]/40 flex items-center justify-center text-[#E8B6CB]">
+                  <QrCode className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
 
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display leading-tight mb-2">
+                  <h3 className="text-lg sm:text-2xl font-bold text-white font-display leading-tight mb-1 sm:mb-2">
                     SCAN TO DOWNLOAD
                   </h3>
-                  <p className="text-xs sm:text-sm text-white/70 max-w-xs mx-auto leading-relaxed">
+                  <p className="text-[11px] sm:text-sm text-white/70 max-w-xs mx-auto leading-relaxed">
                     Point your mobile camera at this QR code to download the latest APK directly.
                   </p>
                 </div>
 
                 {/* QR Code Graphic Container */}
-                <div className="p-4 bg-white rounded-3xl shadow-xl border-4 border-[#B95679]/30 my-2 inline-block relative group">
+                <div className="p-3 sm:p-4 bg-white rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-[#B95679]/30 my-1 sm:my-2 inline-block relative group">
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(DIRECT_APK_DOWNLOAD_URL)}&color=16213e&bgcolor=ffffff`}
                     alt="Scan QR Code to Download CycleSync APK"
-                    className="w-40 h-40 sm:w-48 sm:h-48 object-contain rounded-xl"
+                    className="w-36 h-36 sm:w-48 sm:h-48 object-contain rounded-xl"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
                   />
-                  <div className="text-[10px] text-[#16213E] font-bold mt-2 tracking-wider flex items-center justify-center gap-1.5">
-                    <img src="/ic_launcher-playstore-removebg-preview.png" alt="Logo" className="w-4 h-4 object-contain" />
+                  <div className="text-[9px] sm:text-[10px] text-[#16213E] font-bold mt-1.5 sm:mt-2 tracking-wider flex items-center justify-center gap-1.5">
+                    <img src="/ic_launcher-playstore-removebg-preview.png" alt="Logo" className="w-3.5 h-3.5 object-contain" />
                     <span>CycleSync v1.0.1</span>
                   </div>
                 </div>
               </div>
 
-              <div className="w-full pt-4 border-t border-white/10">
-                <div className="inline-flex items-center gap-2 text-xs font-extrabold text-[#E8B6CB] bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <div className="w-full pt-3 sm:pt-4 border-t border-white/10">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-extrabold text-[#E8B6CB] bg-white/5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>SUPPORTS ANDROID 7.0+ (API 24+)</span>
                 </div>
               </div>
@@ -1312,10 +1343,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* 5. Features Showcase Grid (6 Cards on White #FFFFFF background) */}
-      <section id="features" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 mb-3">
+      <section id="features" className="py-12 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+            <div className="inline-flex items-center gap-2 mb-2 sm:mb-3">
               <span className="text-[#B95679] font-bold text-xs sm:text-sm uppercase tracking-widest">
                 All-In-One Menstrual App
               </span>
@@ -1324,77 +1355,77 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 Language: {selectedLang.toUpperCase()}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-2 sm:mb-3">
               App Features Showcase
             </h2>
-            <p className="text-base sm:text-lg text-[#201A1B]/60 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-[#201A1B]/60 leading-relaxed px-2">
               Designed with precision for intuitive daily tracking, clinical clarity, and complete user control.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Feature 1 */}
-            <div className="p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
-                <Calendar className="w-7 h-7" />
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-4 sm:mb-6 shadow-md shadow-[#B95679]/20">
+                <Calendar className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat1Title}</h3>
-              <p className="text-sm text-[#201A1B]/70 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold text-[#201A1B] mb-2 sm:mb-3 leading-snug">{t.feat1Title}</h3>
+              <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat1Desc}
               </p>
             </div>
 
             {/* Feature 2 */}
-            <div className="p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
-                <Stethoscope className="w-7 h-7" />
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-4 sm:mb-6 shadow-md shadow-[#B95679]/20">
+                <Stethoscope className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat2Title}</h3>
-              <p className="text-sm text-[#201A1B]/70 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold text-[#201A1B] mb-2 sm:mb-3 leading-snug">{t.feat2Title}</h3>
+              <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat2Desc}
               </p>
             </div>
 
             {/* Feature 3 */}
-            <div className="p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
-                <Heart className="w-7 h-7" />
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-4 sm:mb-6 shadow-md shadow-[#B95679]/20">
+                <Heart className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat3Title}</h3>
-              <p className="text-sm text-[#201A1B]/70 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold text-[#201A1B] mb-2 sm:mb-3 leading-snug">{t.feat3Title}</h3>
+              <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat3Desc}
               </p>
             </div>
 
             {/* Feature 4 */}
-            <div className="p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
-                <FileSpreadsheet className="w-7 h-7" />
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-4 sm:mb-6 shadow-md shadow-[#B95679]/20">
+                <FileSpreadsheet className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat4Title}</h3>
-              <p className="text-sm text-[#201A1B]/70 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold text-[#201A1B] mb-2 sm:mb-3 leading-snug">{t.feat4Title}</h3>
+              <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat4Desc}
               </p>
             </div>
 
             {/* Feature 5 */}
-            <div className="p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
-                <Globe className="w-7 h-7" />
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-4 sm:mb-6 shadow-md shadow-[#B95679]/20">
+                <Globe className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat5Title}</h3>
-              <p className="text-sm text-[#201A1B]/70 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold text-[#201A1B] mb-2 sm:mb-3 leading-snug">{t.feat5Title}</h3>
+              <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat5Desc}
               </p>
             </div>
 
             {/* Feature 6 */}
-            <div className="p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
-                <Bell className="w-7 h-7" />
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#FFF8F8] border border-[#B95679]/10 hover:shadow-xl hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-4 sm:mb-6 shadow-md shadow-[#B95679]/20">
+                <Bell className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat6Title}</h3>
-              <p className="text-sm text-[#201A1B]/70 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold text-[#201A1B] mb-2 sm:mb-3 leading-snug">{t.feat6Title}</h3>
+              <p className="text-xs sm:text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat6Desc}
               </p>
             </div>
@@ -1403,85 +1434,85 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* NEW SECTION 2: 📄 SAMPLE PDF MEDICAL REPORT PREVIEW SECTION */}
-      <section id="pdf-report" className="py-20 bg-[#FFF8F8] border-t border-[#B95679]/10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 mb-3 shadow-xs">
+      <section id="pdf-report" className="py-12 sm:py-20 bg-[#FFF8F8] border-t border-[#B95679]/10">
+        <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <span className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 mb-2 sm:mb-3 shadow-xs">
               <FileText className="w-3.5 h-3.5" /> Clinical Health Export
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-2 sm:mb-3">
               Doctor-Ready PDF Reports
             </h2>
-            <p className="text-sm sm:text-base text-[#201A1B]/70 leading-relaxed">
+            <p className="text-xs sm:text-base text-[#201A1B]/70 leading-relaxed px-2">
               Export your complete cycle history and symptom log to show your Gynecologist.
             </p>
           </div>
 
           {/* PDF Report Interactive Card Preview */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#B95679]/20 shadow-2xl relative overflow-hidden">
+          <div className="bg-white rounded-3xl p-4 sm:p-8 border-2 border-[#B95679]/20 shadow-2xl relative overflow-hidden">
             {/* Header Mockup */}
-            <div className="bg-[#B95679] text-white p-4 rounded-2xl flex justify-between items-center mb-6">
+            <div className="bg-[#B95679] text-white p-3.5 sm:p-4 rounded-2xl flex justify-between items-center mb-4 sm:mb-6">
               <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest opacity-80 block">OFFICIAL CLINICAL EXPORT</span>
-                <h3 className="text-lg font-extrabold font-display">CYCLESYNC - CLINICAL HEALTH SUMMARY</h3>
+                <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest opacity-80 block">OFFICIAL CLINICAL EXPORT</span>
+                <h3 className="text-sm sm:text-lg font-extrabold font-display leading-tight">CYCLESYNC - HEALTH SUMMARY</h3>
               </div>
-              <span className="text-xs bg-white/20 px-3 py-1 rounded-full font-mono font-bold">PDF Format</span>
+              <span className="text-[10px] sm:text-xs bg-white/20 px-2.5 py-1 rounded-full font-mono font-bold">PDF Format</span>
             </div>
 
             {/* Content Preview */}
-            <div className="space-y-4 text-xs text-[#201A1B]/80 font-mono">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-[#FFF8F8] p-4 rounded-xl border border-gray-200">
+            <div className="space-y-3 sm:space-y-4 text-xs text-[#201A1B]/80 font-mono">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 bg-[#FFF8F8] p-3 sm:p-4 rounded-xl border border-gray-200">
                 <div>
-                  <span className="text-[10px] text-gray-500 block uppercase font-bold">Patient ID</span>
-                  <span className="font-bold text-[#201A1B]">#PT-9042</span>
+                  <span className="text-[9px] sm:text-[10px] text-gray-500 block uppercase font-bold">Patient ID</span>
+                  <span className="font-bold text-[#201A1B] text-xs">#PT-9042</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-gray-500 block uppercase font-bold">Avg Cycle Length</span>
-                  <span className="font-bold text-[#201A1B]">28 Days</span>
+                  <span className="text-[9px] sm:text-[10px] text-gray-500 block uppercase font-bold">Avg Cycle Length</span>
+                  <span className="font-bold text-[#201A1B] text-xs">28 Days</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-gray-500 block uppercase font-bold">Export Date</span>
-                  <span className="font-bold text-[#201A1B]">Aug 03, 2026</span>
+                  <span className="text-[9px] sm:text-[10px] text-gray-500 block uppercase font-bold">Export Date</span>
+                  <span className="font-bold text-[#201A1B] text-xs">Aug 03, 2026</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-gray-500 block uppercase font-bold">PCOD Screening</span>
-                  <span className="font-bold text-emerald-600">Low Risk (3/30)</span>
+                  <span className="text-[9px] sm:text-[10px] text-gray-500 block uppercase font-bold">PCOD Screening</span>
+                  <span className="font-bold text-emerald-600 text-xs">Low Risk (3/30)</span>
                 </div>
               </div>
 
-              {/* Sample Log Table */}
-              <div className="border border-gray-200 rounded-xl overflow-hidden">
-                <table className="w-full text-left border-collapse">
-                  <thead className="bg-gray-100 text-[10px] uppercase font-bold text-gray-600">
+              {/* Sample Log Table with Mobile Horizontal Scroll */}
+              <div className="border border-gray-200 rounded-xl overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-[340px]">
+                  <thead className="bg-gray-100 text-[9px] sm:text-[10px] uppercase font-bold text-gray-600">
                     <tr>
-                      <th className="p-2.5">Date</th>
-                      <th className="p-2.5">Cramps</th>
-                      <th className="p-2.5">Acne</th>
-                      <th className="p-2.5">Mood</th>
-                      <th className="p-2.5">Water Intake</th>
+                      <th className="p-2 sm:p-2.5">Date</th>
+                      <th className="p-2 sm:p-2.5">Cramps</th>
+                      <th className="p-2 sm:p-2.5">Acne</th>
+                      <th className="p-2 sm:p-2.5">Mood</th>
+                      <th className="p-2 sm:p-2.5">Water</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100 text-[11px]">
-                    <tr><td className="p-2.5">Jul 20, 2026</td><td className="p-2.5">Mild</td><td className="p-2.5">None</td><td className="p-2.5">Irritable</td><td className="p-2.5">2.5 L</td></tr>
-                    <tr><td className="p-2.5">Jul 21, 2026</td><td className="p-2.5">Moderate</td><td className="p-2.5">Mild</td><td className="p-2.5">Fatigued</td><td className="p-2.5">3.0 L</td></tr>
-                    <tr><td className="p-2.5">Jul 22, 2026</td><td className="p-2.5">Mild</td><td className="p-2.5">None</td><td className="p-2.5">Normal</td><td className="p-2.5">2.8 L</td></tr>
+                  <tbody className="divide-y divide-gray-100 text-[10px] sm:text-[11px]">
+                    <tr><td className="p-2 sm:p-2.5">Jul 20, 2026</td><td className="p-2 sm:p-2.5">Mild</td><td className="p-2 sm:p-2.5">None</td><td className="p-2 sm:p-2.5">Irritable</td><td className="p-2 sm:p-2.5">2.5 L</td></tr>
+                    <tr><td className="p-2 sm:p-2.5">Jul 21, 2026</td><td className="p-2 sm:p-2.5">Moderate</td><td className="p-2 sm:p-2.5">Mild</td><td className="p-2 sm:p-2.5">Fatigued</td><td className="p-2 sm:p-2.5">3.0 L</td></tr>
+                    <tr><td className="p-2 sm:p-2.5">Jul 22, 2026</td><td className="p-2 sm:p-2.5">Mild</td><td className="p-2 sm:p-2.5">None</td><td className="p-2 sm:p-2.5">Normal</td><td className="p-2 sm:p-2.5">2.8 L</td></tr>
                   </tbody>
                 </table>
               </div>
 
               <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[#201A1B]">
-                <span className="font-bold block text-[10px] text-amber-800 uppercase">Gynecologist Clinical Remarks</span>
-                <p className="text-[11px] font-sans">Patient maintains a regular 28-day cycle. All health data remains 100% private & offline.</p>
+                <span className="font-bold block text-[9px] sm:text-[10px] text-amber-800 uppercase">Gynecologist Clinical Remarks</span>
+                <p className="text-[10px] sm:text-[11px] font-sans">Patient maintains a regular 28-day cycle. All health data remains 100% private & offline.</p>
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-              <span className="text-xs font-semibold text-gray-500">
+            <div className="mt-4 sm:mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+              <span className="text-[11px] sm:text-xs font-semibold text-gray-500 text-center sm:text-left">
                 📄 Built-in PDF Engine powered by Android Native Canvas
               </span>
               <button 
                 onClick={generateSamplePDF}
-                className="w-full sm:w-auto px-6 py-3 bg-[#B95679] hover:bg-[#9E4566] text-white rounded-2xl font-bold text-xs sm:text-sm shadow-md hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 bg-[#B95679] hover:bg-[#9E4566] text-white rounded-2xl font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Download Sample PDF Preview 📄</span>
               </button>
@@ -1491,52 +1522,52 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* 6. 👩💻 VERTICAL DEV LOG TIMELINE SECTION (DARK SECTION #1A1A2E) */}
-      <section id="devlog" className="py-24 bg-[#1A1A2E] text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section id="devlog" className="py-12 sm:py-24 bg-[#1A1A2E] text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
             
             {/* LEFT PANEL: BADGE & DEVELOPER INFO */}
-            <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+            <div className="lg:col-span-5 space-y-4 sm:space-y-6 lg:sticky lg:top-28">
               {/* Pill Badge: DEV LOG */}
-              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/80 bg-white/5 backdrop-blur-md text-white font-extrabold text-xs sm:text-sm tracking-widest uppercase shadow-lg shadow-[#B95679]/20">
+              <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/80 bg-white/5 backdrop-blur-md text-white font-extrabold text-xs sm:text-sm tracking-widest uppercase shadow-lg shadow-[#B95679]/20">
                 <Terminal className="w-4 h-4 text-[#B95679]" />
                 <span>DEV LOG</span>
               </div>
 
               <div>
-                <span className="inline-block px-3.5 py-1 rounded-full bg-[#E8B6CB]/20 text-[#E8B6CB] border border-[#E8B6CB]/30 text-xs font-bold tracking-wider uppercase mb-3">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#E8B6CB]/20 text-[#E8B6CB] border border-[#E8B6CB]/30 text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-2 sm:mb-3">
                   Crafted with passion by Duo Developers
                 </span>
-                <h2 className="text-3xl sm:text-5xl font-black font-display tracking-tight text-white leading-tight">
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
                   Behind the Build
                 </h2>
               </div>
 
-              <p className="text-base sm:text-lg text-white/70 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base lg:text-lg text-white/70 leading-relaxed font-normal">
                 Tracking the evolution and updates of CycleSync.
               </p>
 
               {/* Developer Profile Box */}
-              <div className="p-6 rounded-3xl bg-[#16213E]/90 border border-[#B95679]/30 backdrop-blur-sm space-y-4 shadow-xl">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B95679] to-[#9E4566] text-white flex items-center justify-center text-xl font-bold shadow-md shadow-[#B95679]/30">
+              <div className="p-4 sm:p-6 rounded-3xl bg-[#16213E]/90 border border-[#B95679]/30 backdrop-blur-sm space-y-3 sm:space-y-4 shadow-xl">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#B95679] to-[#9E4566] text-white flex items-center justify-center text-lg sm:text-xl font-bold shadow-md shadow-[#B95679]/30 shrink-0">
                     DD
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white font-display">Duo Developers</h3>
-                    <p className="text-xs font-semibold text-[#E8B6CB] uppercase tracking-wider">
+                    <h3 className="text-base sm:text-lg font-bold text-white font-display">Duo Developers</h3>
+                    <p className="text-[11px] sm:text-xs font-semibold text-[#E8B6CB] uppercase tracking-wider">
                       Lead: Tanvi Yadav | Android Team
                     </p>
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-white/75 leading-relaxed italic border-l-2 border-[#B95679] pl-3 py-1">
+                <p className="text-xs sm:text-sm text-white/75 leading-relaxed italic border-l-2 border-[#B95679] pl-3 py-0.5">
                   "Built with 100% commitment to data privacy — no cloud servers, no account requirements, and zero advertising analytics."
                 </p>
 
-                <div className="pt-2 flex flex-wrap gap-2">
+                <div className="pt-1 flex flex-wrap gap-1.5 sm:gap-2">
                   {['Java 17', 'Android SDK 34', 'Room DB', 'Material 3', 'Biometric API'].map((tech, i) => (
-                    <span key={i} className="px-2.5 py-1 rounded-lg bg-white/5 text-[#E8B6CB] border border-white/10 text-[11px] font-mono">
+                    <span key={i} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-white/5 text-[#E8B6CB] border border-white/10 text-[10px] sm:text-[11px] font-mono">
                       {tech}
                     </span>
                   ))}
@@ -1546,7 +1577,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   href={GITHUB_REPO_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3 bg-[#B95679]/20 hover:bg-[#B95679]/30 border border-[#B95679]/40 text-white rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 mt-2"
+                  className="w-full py-2.5 sm:py-3 bg-[#B95679]/20 hover:bg-[#B95679]/30 border border-[#B95679]/40 text-white rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 mt-2 active:scale-95"
                 >
                   <Code2 className="w-4 h-4 text-[#B95679]" />
                   <span>View GitHub Repository</span>
@@ -1556,40 +1587,40 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             </div>
 
             {/* RIGHT COLUMN: VERTICAL CONNECTING LINE WITH STACKED TIMELINE CARDS */}
-            <div className="lg:col-span-7 relative pl-6 sm:pl-8">
+            <div className="lg:col-span-7 relative pl-5 sm:pl-8">
               {/* Vertical Rose Pink Dotted Connecting Line */}
-              <div className="absolute left-2 sm:left-3 top-3 bottom-3 w-0.5 border-l-2 border-dashed border-[#B95679]/60"></div>
+              <div className="absolute left-1.5 sm:left-3 top-3 bottom-3 w-0.5 border-l-2 border-dashed border-[#B95679]/60"></div>
 
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 {/* CARD 1 (v1.0.1 - 3 Aug 2026) */}
                 <div className="relative group">
-                  <div className="absolute -left-[23px] sm:-left-[27px] top-6 w-5 h-5 rounded-full bg-[#B95679] ring-4 ring-[#1A1A2E] shadow-lg shadow-[#B95679]/50 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
+                  <div className="absolute -left-[22px] sm:-left-[27px] top-6 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#B95679] ring-4 ring-[#1A1A2E] shadow-lg shadow-[#B95679]/50 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-ping"></div>
                   </div>
 
-                  <div className="p-6 sm:p-7 rounded-3xl bg-[#16213E] border border-[#B95679]/40 hover:border-[#B95679] transition-all duration-300 shadow-xl space-y-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-[#B95679] text-white text-xs font-black tracking-wider uppercase shadow-md shadow-[#B95679]/30">
+                  <div className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#16213E] border border-[#B95679]/40 hover:border-[#B95679] transition-all duration-300 shadow-xl space-y-3 sm:space-y-4">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#B95679] text-white text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-md shadow-[#B95679]/30">
                         v1.0.1
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-white/10 text-[#E8B6CB] border border-white/10 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/10 text-[#E8B6CB] border border-white/10 text-[11px] sm:text-xs font-bold">
                         3 Aug 2026
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] sm:text-xs font-bold flex items-center gap-1">
                         <Zap className="w-3 h-3" /> LATEST
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                    <h3 className="text-base sm:text-2xl font-bold text-white font-display leading-snug">
                       In-App GitHub Releases Auto-Update Engine
                     </h3>
 
-                    <p className="text-sm text-white/80 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
                       Asynchronous update checker querying GitHub API v3 with release notes and 1-click APK download dialog.
                     </p>
 
                     {expandedDevCards['v1.0.1'] && (
-                      <div className="pt-4 mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
+                      <div className="pt-3 mt-3 sm:pt-4 sm:mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
                         <p className="font-semibold text-[#E8B6CB]">Technical Highlights:</p>
                         <ul className="list-disc list-inside space-y-1 text-white/80">
                           <li>Custom OkHttp background service querying <code className="text-[#E8B6CB]">api.github.com/repos/ITSTANVI28/PeriodTracker/releases/latest</code></li>
@@ -1629,33 +1660,33 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
                 {/* CARD 2 (v1.0.0 - 27 Jul 2026) */}
                 <div className="relative group">
-                  <div className="absolute -left-[23px] sm:-left-[27px] top-6 w-5 h-5 rounded-full bg-[#B95679]/80 ring-4 ring-[#1A1A2E] shadow-md flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white/80 rounded-full"></div>
+                  <div className="absolute -left-[22px] sm:-left-[27px] top-6 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#B95679]/80 ring-4 ring-[#1A1A2E] shadow-md flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/80 rounded-full"></div>
                   </div>
 
-                  <div className="p-6 sm:p-7 rounded-3xl bg-[#16213E] border border-white/10 hover:border-[#B95679]/40 transition-all duration-300 shadow-xl space-y-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-black tracking-wider uppercase">
+                  <div className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#16213E] border border-white/10 hover:border-[#B95679]/40 transition-all duration-300 shadow-xl space-y-3 sm:space-y-4">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/15 text-white text-[11px] sm:text-xs font-black tracking-wider uppercase">
                         v1.0.0
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] sm:text-xs font-bold">
                         27 Jul 2026
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] sm:text-xs font-bold">
                         STABLE
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                    <h3 className="text-base sm:text-2xl font-bold text-white font-display leading-snug">
                       Room Database & Architecture Overhaul
                     </h3>
 
-                    <p className="text-sm text-white/80 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
                       Migrated SQLite to Room DB (PeriodDao & SymptomDao), added PDF Export, PIN/Biometric Lock, and Localization.
                     </p>
 
                     {expandedDevCards['v1.0.0'] && (
-                      <div className="pt-4 mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
+                      <div className="pt-3 mt-3 sm:pt-4 sm:mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
                         <p className="font-semibold text-[#E8B6CB]">Technical Highlights:</p>
                         <ul className="list-disc list-inside space-y-1 text-white/80">
                           <li>Replaced SQLiteOpenHelper with Jetpack Room ORM (<code className="text-[#E8B6CB]">PeriodEntity</code>, <code className="text-[#E8B6CB]">SymptomLogEntity</code>)</li>
@@ -1685,33 +1716,33 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
                 {/* CARD 3 (v0.9.0 - 15 Jul 2026) */}
                 <div className="relative group">
-                  <div className="absolute -left-[23px] sm:-left-[27px] top-6 w-5 h-5 rounded-full bg-[#B95679]/60 ring-4 ring-[#1A1A2E] shadow-md flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white/60 rounded-full"></div>
+                  <div className="absolute -left-[22px] sm:-left-[27px] top-6 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#B95679]/60 ring-4 ring-[#1A1A2E] shadow-md flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/60 rounded-full"></div>
                   </div>
 
-                  <div className="p-6 sm:p-7 rounded-3xl bg-[#16213E] border border-white/10 hover:border-[#B95679]/40 transition-all duration-300 shadow-xl space-y-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-black tracking-wider uppercase">
+                  <div className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#16213E] border border-white/10 hover:border-[#B95679]/40 transition-all duration-300 shadow-xl space-y-3 sm:space-y-4">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/15 text-white text-[11px] sm:text-xs font-black tracking-wider uppercase">
                         v0.9.0
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] sm:text-xs font-bold">
                         15 Jul 2026
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] sm:text-xs font-bold">
                         BETA
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                    <h3 className="text-base sm:text-2xl font-bold text-white font-display leading-snug">
                       PCOD/PCOS Self-Assessment Module
                     </h3>
 
-                    <p className="text-sm text-white/80 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
                       Integrated interactive 10-question screening questionnaire with weighted scoring algorithm.
                     </p>
 
                     {expandedDevCards['v0.9.0'] && (
-                      <div className="pt-4 mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
+                      <div className="pt-3 mt-3 sm:pt-4 sm:mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
                         <p className="font-semibold text-[#E8B6CB]">Technical Highlights:</p>
                         <ul className="list-disc list-inside space-y-1 text-white/80">
                           <li>Evaluates clinical indicators: cycle length variation (&gt;35 days), acne, hirsutism, and weight fluctuations</li>
@@ -1740,33 +1771,33 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
                 {/* CARD 4 (v0.1.0 - 01 Jul 2026) */}
                 <div className="relative group">
-                  <div className="absolute -left-[23px] sm:-left-[27px] top-6 w-5 h-5 rounded-full bg-[#B95679]/40 ring-4 ring-[#1A1A2E] shadow-md flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                  <div className="absolute -left-[22px] sm:-left-[27px] top-6 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#B95679]/40 ring-4 ring-[#1A1A2E] shadow-md flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/40 rounded-full"></div>
                   </div>
 
-                  <div className="p-6 sm:p-7 rounded-3xl bg-[#16213E] border border-white/10 hover:border-[#B95679]/40 transition-all duration-300 shadow-xl space-y-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-black tracking-wider uppercase">
+                  <div className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#16213E] border border-white/10 hover:border-[#B95679]/40 transition-all duration-300 shadow-xl space-y-3 sm:space-y-4">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/15 text-white text-[11px] sm:text-xs font-black tracking-wider uppercase">
                         v0.1.0
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[11px] sm:text-xs font-bold">
                         01 Jul 2026
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold">
+                      <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[11px] sm:text-xs font-bold">
                         INITIAL RELEASE
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                    <h3 className="text-base sm:text-2xl font-bold text-white font-display leading-snug">
                       Initial Android Repository Launch
                     </h3>
 
-                    <p className="text-sm text-white/80 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
                       Base Android SDK build with SQLite local database schema, Material 3 UI components, and calendar grid.
                     </p>
 
                     {expandedDevCards['v0.1.0'] && (
-                      <div className="pt-4 mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
+                      <div className="pt-3 mt-3 sm:pt-4 sm:mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
                         <p className="font-semibold text-[#E8B6CB]">Technical Highlights:</p>
                         <ul className="list-disc list-inside space-y-1 text-white/80">
                           <li>Configured Android Studio Gradle project with Java 17 and SDK 34 compile targets</li>
@@ -1801,26 +1832,26 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       </section>
 
       {/* Planned Features Section */}
-      <section id="planned-features" className="py-24 bg-gradient-to-b from-[#FFF8F8] via-white to-[#FFF0F3] border-t border-[#B95679]/15 relative overflow-hidden">
+      <section id="planned-features" className="py-12 sm:py-24 bg-gradient-to-b from-[#FFF8F8] via-white to-[#FFF0F3] border-t border-[#B95679]/15 relative overflow-hidden">
         {/* Background glow effects */}
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#B95679]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-10 -right-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4 px-2 sm:px-0">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-[11px] sm:text-xs font-bold uppercase tracking-widest">
               <Rocket className="w-3.5 h-3.5" /> Product Roadmap
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#201A1B] tracking-tight leading-tight">
               Planned Features & What's Next
             </h2>
-            <p className="text-base sm:text-lg text-[#201A1B]/75 leading-relaxed font-sans">
+            <p className="text-sm sm:text-base lg:text-lg text-[#201A1B]/75 leading-relaxed font-sans">
               Discover upcoming enhancements designed to elevate your cycle tracking, privacy protections, and health insights without compromising on zero-cloud security.
             </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {[
               {
                 title: "Partner Sync & Offline Sharing",
@@ -2148,20 +2179,20 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               </div>
             </div>
           ) : (
-            <form onSubmit={handleIssueSubmit} className="bg-white/5 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-md space-y-6 shadow-2xl">
+            <form onSubmit={handleIssueSubmit} className="bg-white/5 border border-white/15 rounded-3xl p-4 sm:p-8 backdrop-blur-md space-y-4 sm:space-y-6 shadow-2xl">
               
               {/* Category selector radio pills */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-[#E8B6CB] block">
                   Select Issue Type / Category:
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-2.5">
                   {[
-                    { id: 'bug', label: '🐛 Bug Report', icon: Bug, desc: 'Fix something broken' },
-                    { id: 'feature', label: '💡 Feature Idea', icon: Sparkles, desc: 'Suggest enhancement' },
-                    { id: 'health', label: '🏥 Health Tracker', icon: Stethoscope, desc: 'PCOD or prediction' },
-                    { id: 'ui', label: '🎨 UI / UX', icon: Palette, desc: 'Design & layout' },
-                    { id: 'privacy', label: '🔒 Privacy / DB', icon: ShieldCheck, desc: 'SQLite & Security' },
+                    { id: 'bug', label: '🐛 Bug Report', icon: Bug, desc: 'Fix broken feature', span: '' },
+                    { id: 'feature', label: '💡 Feature Idea', icon: Sparkles, desc: 'Suggest new idea', span: '' },
+                    { id: 'health', label: '🏥 Health Tracker', icon: Stethoscope, desc: 'PCOD or prediction', span: '' },
+                    { id: 'ui', label: '🎨 UI / UX', icon: Palette, desc: 'Design & layout', span: '' },
+                    { id: 'privacy', label: '🔒 Privacy / DB', icon: ShieldCheck, desc: 'SQLite & Security', span: 'col-span-2 sm:col-span-1' },
                   ].map((cat) => {
                     const isSelected = issueType === cat.id;
                     return (
@@ -2169,14 +2200,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                         key={cat.id}
                         type="button"
                         onClick={() => setIssueType(cat.id as any)}
-                        className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                        className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between active:scale-[0.98] ${cat.span} ${
                           isSelected
                             ? 'bg-[#B95679] border-[#B95679] text-white shadow-lg shadow-[#B95679]/30 scale-[1.02]'
                             : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-white'
                         }`}
                       >
                         <span className="font-bold text-xs block">{cat.label}</span>
-                        <span className="text-[10px] opacity-75 block mt-1">{cat.desc}</span>
+                        <span className="text-[10px] opacity-75 block mt-0.5">{cat.desc}</span>
                       </button>
                     );
                   })}
@@ -2196,7 +2227,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                     if (issueError) setIssueError('');
                   }}
                   placeholder="e.g., PCOD diagnostic risk score calculation error or Add dark theme"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-base sm:text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all"
                 />
               </div>
 
@@ -2213,7 +2244,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                     if (issueError) setIssueError('');
                   }}
                   placeholder="Describe what happened or what feature you would like added to CycleSync..."
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all resize-y"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-base sm:text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all resize-y"
                 />
               </div>
 
@@ -2227,7 +2258,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   value={issueSteps}
                   onChange={(e) => setIssueSteps(e.target.value)}
                   placeholder="1. Open PCOD quiz  2. Select 5 questions  3. Click Calculate..."
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-base sm:text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all"
                 />
               </div>
 
@@ -2241,7 +2272,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   value={reporterContact}
                   onChange={(e) => setReporterContact(e.target.value)}
                   placeholder="e.g., Tanvi Yadav or tanvi@example.com"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-base sm:text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#B95679] focus:border-transparent transition-all"
                 />
               </div>
 
@@ -2439,10 +2470,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       )}
 
       {/* Sticky Quick Actions Button & Menu */}
-      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 max-w-[calc(100vw-2rem)]">
+      <div className="fixed bottom-3 left-3 sm:bottom-6 sm:left-6 z-40 max-w-[calc(100vw-1.5rem)]">
         {/* Expanded Quick Actions Menu */}
         {quickActionsOpen && (
-          <div className="absolute bottom-full left-0 mb-3 w-64 sm:w-72 max-w-[calc(100vw-2.5rem)] bg-[#16213E]/95 text-white border border-[#B95679]/40 rounded-2xl shadow-2xl p-3 backdrop-blur-md space-y-1.5 animate-in fade-in slide-in-from-bottom-3 duration-200">
+          <div className="absolute bottom-full left-0 mb-2.5 w-64 sm:w-72 max-w-[calc(100vw-2rem)] bg-[#16213E]/95 text-white border border-[#B95679]/40 rounded-2xl shadow-2xl p-2.5 sm:p-3 backdrop-blur-md space-y-1.5 animate-in fade-in slide-in-from-bottom-3 duration-200">
             <div className="flex items-center justify-between pb-2 mb-1 border-b border-white/10 px-2 pt-1">
               <div className="flex items-center gap-1.5 font-bold text-xs font-display text-[#E8B6CB]">
                 <Zap className="w-3.5 h-3.5 text-[#B95679] fill-[#B95679]" />
@@ -2462,14 +2493,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               href={DIRECT_APK_DOWNLOAD_URL}
               download
               onClick={() => setQuickActionsOpen(false)}
-              className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer"
+              className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer active:scale-95"
             >
               <div className="p-2 rounded-lg bg-[#B95679]/20 text-[#E8B6CB] group-hover:bg-[#B95679] group-hover:text-white transition-colors">
                 <Download className="w-4 h-4" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-white group-hover:text-[#E8B6CB] transition-colors">Download APK (v1.2)</div>
-                <div className="text-[10px] text-white/60">Direct Android Install</div>
+                <div className="font-bold text-white group-hover:text-[#E8B6CB] transition-colors">Download APK</div>
+                <div className="text-[10px] text-white/60">Direct Android v1.0.1</div>
               </div>
             </a>
 
@@ -2477,14 +2508,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             <a
               href="#issues"
               onClick={() => setQuickActionsOpen(false)}
-              className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer"
+              className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer active:scale-95"
             >
               <div className="p-2 rounded-lg bg-[#B95679]/20 text-[#E8B6CB] group-hover:bg-[#B95679] group-hover:text-white transition-colors">
                 <Bug className="w-4 h-4" />
               </div>
               <div className="flex-1">
                 <div className="font-bold text-white group-hover:text-[#E8B6CB] transition-colors">Report Issue</div>
-                <div className="text-[10px] text-white/60">Submit bug or feedback</div>
+                <div className="text-[10px] text-white/60">GitHub Feedback Hub</div>
               </div>
             </a>
 
@@ -2494,14 +2525,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 setPrivacyModalOpen(true);
                 setQuickActionsOpen(false);
               }}
-              className="w-full text-left flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer"
+              className="w-full text-left flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 hover:bg-[#B95679]/20 border border-white/5 hover:border-[#B95679]/40 transition-all text-xs group cursor-pointer active:scale-95"
             >
               <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-300 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 group-hover:text-white" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-white group-hover:text-[#E8B6CB] transition-colors">View Privacy Policy</div>
-                <div className="text-[10px] text-white/60">100% Local SQLite Storage</div>
+                <div className="font-bold text-white group-hover:text-[#E8B6CB] transition-colors">Privacy Policy</div>
+                <div className="text-[10px] text-white/60">100% Offline SQLite</div>
               </div>
             </button>
           </div>
@@ -2510,52 +2541,52 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
         {/* Sticky Trigger Button */}
         <button
           onClick={() => setQuickActionsOpen(!quickActionsOpen)}
-          className="px-4 py-3 bg-[#16213E] hover:bg-[#1f2d52] text-white font-bold text-xs sm:text-sm rounded-2xl border border-[#B95679]/40 shadow-2xl shadow-[#B95679]/20 flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md group"
+          className="px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#16213E] hover:bg-[#1f2d52] text-white font-bold text-xs sm:text-sm rounded-2xl border border-[#B95679]/40 shadow-2xl shadow-[#B95679]/20 flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md group"
           aria-expanded={quickActionsOpen}
           aria-label="Toggle Quick Actions menu"
         >
-          <span className="p-1.5 rounded-xl bg-[#B95679]/20 text-[#E8B6CB] group-hover:bg-[#B95679] group-hover:text-white transition-colors">
-            <Zap className="w-4 h-4 text-[#E8B6CB] group-hover:text-white fill-[#E8B6CB]/30" />
+          <span className="p-1 sm:p-1.5 rounded-xl bg-[#B95679]/20 text-[#E8B6CB] group-hover:bg-[#B95679] group-hover:text-white transition-colors">
+            <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E8B6CB] group-hover:text-white fill-[#E8B6CB]/30" />
           </span>
-          <span className="font-display tracking-wide">Quick Actions</span>
-          <ChevronUp className={`w-4 h-4 text-[#E8B6CB] transition-transform duration-200 ${quickActionsOpen ? 'rotate-180' : ''}`} />
+          <span className="font-display tracking-wide text-xs sm:text-sm">Quick Menu</span>
+          <ChevronUp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E8B6CB] transition-transform duration-200 ${quickActionsOpen ? 'rotate-180' : ''}`} />
         </button>
       </div>
 
       {/* 8. Footer */}
-      <footer className="bg-[#1A1A2E] text-white border-t border-white/10 py-12">
+      <footer className="bg-[#1A1A2E] text-white border-t border-white/10 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
             {/* Left */}
-            <div className="space-y-2 text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2.5">
+            <div className="space-y-1.5 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-2">
                 <img 
                   src="/ic_launcher-playstore-removebg-preview.png" 
                   alt="CycleSync Logo" 
-                  className="w-9 h-9 object-contain drop-shadow-sm" 
+                  className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-sm" 
                 />
-                <span className="text-lg font-bold font-display text-white">CycleSync</span>
+                <span className="text-base sm:text-lg font-bold font-display text-white">CycleSync</span>
               </div>
-              <p className="text-xs text-white/60">
-                Designed & Developed by <span className="text-[#E8B6CB] font-semibold">Duo Developers</span> | CycleSync Team Project (Lead: Tanvi Yadav)
+              <p className="text-[11px] sm:text-xs text-white/60">
+                Designed & Developed by <span className="text-[#E8B6CB] font-semibold">Duo Developers</span> | Lead: Tanvi Yadav & Pranav
               </p>
             </div>
 
             {/* Right Links */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-white/70 font-semibold">
-              <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-white/70 font-semibold">
+              <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1 active:scale-95">
                 <Github className="w-4 h-4" /> Source Code
               </a>
-              <a href={DIRECT_APK_DOWNLOAD_URL} download className="hover:text-white transition-colors flex items-center gap-1">
-                <Download className="w-4 h-4" /> Direct APK Download
+              <a href={DIRECT_APK_DOWNLOAD_URL} download className="hover:text-white transition-colors flex items-center gap-1 active:scale-95">
+                <Download className="w-4 h-4" /> Direct APK
               </a>
-              <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4" /> MIT License
-              </a>
+              <button onClick={() => setPrivacyModalOpen(true)} className="hover:text-white transition-colors flex items-center gap-1 active:scale-95 cursor-pointer">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Privacy
+              </button>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-white/5 text-center text-xs text-white/40">
+          <div className="mt-6 pt-4 border-t border-white/5 text-center text-xs text-white/40">
             © {new Date().getFullYear()} CycleSync Android App by Duo Developers. Built with 100% Privacy & Zero Tracking.
           </div>
         </div>
