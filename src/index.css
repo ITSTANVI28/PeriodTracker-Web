@@ -13,6 +13,7 @@
     background-color: #FFF8F8;
     color: #16213E;
     letter-spacing: -0.01em;
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
@@ -20,6 +21,11 @@
   h1, h2, h3, h4, h5, h6, .font-display {
     font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
     letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  p {
+    line-height: 1.6;
   }
 
   code, pre, .font-mono {

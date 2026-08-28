@@ -591,53 +591,47 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
   return (
     <div className="w-full bg-[#FFF8F8] text-[#201A1B] overflow-x-hidden font-sans selection:bg-[#B95679] selection:text-white">
       {/* 1. Sticky Navigation Bar */}
-      <nav className="sticky top-0 z-50 w-full glass-nav transition-all border-b border-[#B95679]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <nav className="sticky top-0 z-50 w-full glass-nav transition-all border-b border-[#B95679]/15">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
-          <a href="#" className="flex items-center space-x-2.5 group">
+          <a href="#" className="flex items-center gap-2.5 shrink-0 group">
             <img 
               src="/ic_launcher-playstore-removebg-preview.png" 
               alt="CycleSync Logo" 
-              className="w-10 h-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform" 
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" 
             />
-            <span className="text-xl sm:text-2xl font-extrabold font-display tracking-tight text-[#B95679]">
+            <span className="text-xl sm:text-2xl font-extrabold font-display tracking-tight text-[#B95679] whitespace-nowrap">
               CycleSync
             </span>
           </a>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[#201A1B]/80">
-            <a href="#calculator" className="hover:text-[#B95679] transition-colors flex items-center gap-1 text-[#B95679]">
-              <Calculator className="w-4 h-4" /> Calculator
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-semibold text-[#201A1B]/85 shrink min-w-0">
+            <a href="#calculator" className="hover:text-[#B95679] transition-colors flex items-center gap-1 text-[#B95679] font-bold whitespace-nowrap">
+              <Calculator className="w-4 h-4 shrink-0" /> Calculator
             </a>
-            <a href="#features" className="hover:text-[#B95679] transition-colors">Features</a>
-            <a href="#privacy" className="hover:text-[#B95679] transition-colors">Privacy</a>
-            <a href="#download" className="hover:text-[#B95679] transition-colors font-bold text-[#B95679]">Download</a>
-            <a href="#pdf-report" className="hover:text-[#B95679] transition-colors">PDF Report</a>
-            <a href="#issues" className="hover:text-[#B95679] transition-colors flex items-center gap-1 font-bold text-[#B95679]">
-              <Bug className="w-4 h-4" /> Report Issue
-            </a>
-            <a href="#team-note" className="hover:text-[#B95679] transition-colors flex items-center gap-1 font-semibold text-[#B95679]">
-              <Heart className="w-3.5 h-3.5 text-[#B95679] fill-[#B95679]" /> Note from Developers
-            </a>
-            <a href="#devlog" className="hover:text-[#B95679] transition-colors flex items-center gap-1">
+            <a href="#features" className="hover:text-[#B95679] transition-colors whitespace-nowrap">Features</a>
+            <a href="#privacy" className="hover:text-[#B95679] transition-colors whitespace-nowrap">Privacy</a>
+            <a href="#download" className="hover:text-[#B95679] transition-colors font-bold text-[#B95679] whitespace-nowrap">Download</a>
+            <a href="#pdf-report" className="hover:text-[#B95679] transition-colors whitespace-nowrap">PDF Report</a>
+            <a href="#devlog" className="hover:text-[#B95679] transition-colors hidden xl:flex items-center gap-1 whitespace-nowrap">
               <span>Dev Log</span>
-              <span className="px-2 py-0.5 text-[10px] bg-[#B95679]/10 text-[#B95679] rounded-full font-bold border border-[#B95679]/20">
-                Timeline
+              <span className="px-1.5 py-0.5 text-[9px] bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">
+                v1.0
               </span>
             </a>
-            <a href="#planned-features" className="hover:text-[#B95679] transition-colors flex items-center gap-1 text-[#B95679] font-bold">
-              <Rocket className="w-3.5 h-3.5" /> Planned
+            <a href="#issues" className="hover:text-[#B95679] transition-colors hidden xl:flex items-center gap-1 font-semibold text-[#B95679] whitespace-nowrap">
+              <Bug className="w-3.5 h-3.5 shrink-0" /> Issues
             </a>
-            <a href="#faq" className="hover:text-[#B95679] transition-colors">FAQ</a>
+            <a href="#faq" className="hover:text-[#B95679] transition-colors whitespace-nowrap">FAQ</a>
           </div>
 
           {/* Desktop Action Button */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <a 
               href={DIRECT_APK_DOWNLOAD_URL}
               download
-              className="px-6 py-2.5 text-xs sm:text-sm font-bold bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-full shadow-md shadow-[#B95679]/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+              className="px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-full shadow-md shadow-[#B95679]/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
             >
               <span>Download App 📱</span>
             </a>
@@ -732,14 +726,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               </button>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display leading-[1.1] text-[#201A1B] tracking-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display leading-tight text-[#201A1B] tracking-tight my-4">
               {t.heroTitle.split(" ")[0]} {' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B95679] via-[#D87093] to-[#E8B6CB]">
                 {t.heroTitle.split(" ").slice(1).join(" ")}
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-[#201A1B]/75 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            <p className="text-lg sm:text-xl text-[#201A1B]/75 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal mb-6">
               {t.heroSub}
             </p>
 
@@ -895,14 +889,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       {/* NEW SECTION 1: 🧮 INTERACTIVE LIVE CYCLE CALCULATOR SECTION */}
       <section id="calculator" className="py-20 bg-gradient-to-b from-[#FFF8F8] to-white border-y border-[#B95679]/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 mb-3 shadow-xs">
               <Calculator className="w-3.5 h-3.5" /> Quick Cycle Predictor
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#201A1B]">
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#201A1B] leading-tight mb-3">
               Interactive Cycle Calculator
             </h2>
-            <p className="text-sm sm:text-base text-[#201A1B]/70">
+            <p className="text-sm sm:text-base text-[#201A1B]/70 leading-relaxed">
               Try a quick prediction right here, then download the app for full offline tracking!
             </p>
           </div>
@@ -1004,16 +998,16 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Title Column */}
             <div className="lg:col-span-5">
-              <span className="text-[#E8B6CB] text-xs sm:text-sm font-bold uppercase tracking-widest block mb-2">
+              <span className="text-[#E8B6CB] text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">
                 Uncompromising Security
               </span>
-              <h2 className="text-4xl sm:text-6xl font-black font-display tracking-tight leading-none text-white uppercase italic">
+              <h2 className="text-4xl sm:text-6xl font-black font-display tracking-tight leading-tight text-white uppercase italic mb-4">
                 ENGINEERED FOR <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B95679] via-[#D87093] to-[#E8B6CB]">
                   PRIVACY.
                 </span>
               </h2>
-              <p className="mt-6 text-white/70 text-base sm:text-lg leading-relaxed max-w-md">
+              <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-md">
                 Your reproductive health data is nobody's business but yours. CycleSync is built with a zero-cloud architecture so your logs never leave your phone.
               </p>
             </div>
@@ -1024,7 +1018,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 <div className="w-12 h-12 rounded-2xl bg-[#B95679]/20 flex items-center justify-center text-[#B95679] mb-6 group-hover:scale-110 transition-transform">
                   <Lock className="w-6 h-6 text-[#E8B6CB]" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">🔐 Local SQLite/Room DB</h3>
+                <h3 className="text-lg font-bold text-white mb-2 leading-snug">🔐 Local SQLite/Room DB</h3>
                 <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
                   100% of your cycle logs, symptom entries, and notes are saved directly on local SQLite/Room database storage.
                 </p>
@@ -1034,7 +1028,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 <div className="w-12 h-12 rounded-2xl bg-[#B95679]/20 flex items-center justify-center text-[#B95679] mb-6 group-hover:scale-110 transition-transform">
                   <ShieldCheck className="w-6 h-6 text-[#E8B6CB]" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">🚫 Zero Cloud Transmit</h3>
+                <h3 className="text-lg font-bold text-white mb-2 leading-snug">🚫 Zero Cloud Transmit</h3>
                 <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
                   No cloud server sync, no external accounts, no email requirements, and zero advertising SDK trackers.
                 </p>
@@ -1044,7 +1038,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 <div className="w-12 h-12 rounded-2xl bg-[#B95679]/20 flex items-center justify-center text-[#B95679] mb-6 group-hover:scale-110 transition-transform">
                   <Smartphone className="w-6 h-6 text-[#E8B6CB]" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">🛡️ PIN & Biometric Lock</h3>
+                <h3 className="text-lg font-bold text-white mb-2 leading-snug">🛡️ PIN & Biometric Lock</h3>
                 <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
                   Secure your personal period app with a 4-digit PIN lock and security recovery question options.
                 </p>
@@ -1057,14 +1051,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       {/* NEW SECTION 3: 🛡️ PRIVACY COMPARISON CARD */}
       <section className="py-20 bg-[#16213E] text-white border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest inline-block">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest inline-block mb-3">
               COMMERCIAL VS PRIVACY-FIRST
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white leading-tight mb-3">
               Why CycleSync is Different
             </h2>
-            <p className="text-sm sm:text-base text-white/70">
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
               See how CycleSync protects your intimate health records compared to standard commercial apps.
             </p>
           </div>
@@ -1145,14 +1139,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Heading */}
-          <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest inline-block">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest inline-block mb-3">
               📲 GET THE APK DIRECTLY
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight leading-tight mb-3">
               Direct Download & Scan
             </h2>
-            <p className="text-sm sm:text-base text-white/70">
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
               Select your phone architecture or scan the QR code to install the latest CycleSync Android APK.
             </p>
           </div>
@@ -1169,7 +1163,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-white flex items-center gap-2 leading-snug">
                     <Cpu className="w-5 h-5 text-[#B95679]" />
                     Select Device Architecture
                   </h3>
@@ -1253,10 +1247,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 </div>
 
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display leading-tight mb-2">
                     SCAN TO DOWNLOAD
                   </h3>
-                  <p className="text-xs sm:text-sm text-white/70 max-w-xs mx-auto mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/70 max-w-xs mx-auto leading-relaxed">
                     Point your mobile camera at this QR code to download the latest APK directly.
                   </p>
                 </div>
@@ -1330,10 +1324,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 Language: {selectedLang.toUpperCase()}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B]">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-3">
               App Features Showcase
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-[#201A1B]/60">
+            <p className="text-base sm:text-lg text-[#201A1B]/60 leading-relaxed">
               Designed with precision for intuitive daily tracking, clinical clarity, and complete user control.
             </p>
           </div>
@@ -1344,7 +1338,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
                 <Calendar className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3">{t.feat1Title}</h3>
+              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat1Title}</h3>
               <p className="text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat1Desc}
               </p>
@@ -1355,7 +1349,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
                 <Stethoscope className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3">{t.feat2Title}</h3>
+              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat2Title}</h3>
               <p className="text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat2Desc}
               </p>
@@ -1366,7 +1360,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
                 <Heart className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3">{t.feat3Title}</h3>
+              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat3Title}</h3>
               <p className="text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat3Desc}
               </p>
@@ -1377,7 +1371,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
                 <FileSpreadsheet className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3">{t.feat4Title}</h3>
+              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat4Title}</h3>
               <p className="text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat4Desc}
               </p>
@@ -1388,7 +1382,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
                 <Globe className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3">{t.feat5Title}</h3>
+              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat5Title}</h3>
               <p className="text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat5Desc}
               </p>
@@ -1399,7 +1393,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-14 h-14 rounded-2xl bg-[#B95679] text-white flex items-center justify-center mb-6 shadow-md shadow-[#B95679]/20">
                 <Bell className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#201A1B] mb-3">{t.feat6Title}</h3>
+              <h3 className="text-xl font-bold text-[#201A1B] mb-3 leading-snug">{t.feat6Title}</h3>
               <p className="text-sm text-[#201A1B]/70 leading-relaxed">
                 {t.feat6Desc}
               </p>
@@ -1411,14 +1405,14 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       {/* NEW SECTION 2: 📄 SAMPLE PDF MEDICAL REPORT PREVIEW SECTION */}
       <section id="pdf-report" className="py-20 bg-[#FFF8F8] border-t border-[#B95679]/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="px-4 py-1.5 rounded-full bg-[#B95679]/10 text-[#B95679] border border-[#B95679]/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 mb-3 shadow-xs">
               <FileText className="w-3.5 h-3.5" /> Clinical Health Export
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B]">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-3">
               Doctor-Ready PDF Reports
             </h2>
-            <p className="text-sm sm:text-base text-[#201A1B]/70">
+            <p className="text-sm sm:text-base text-[#201A1B]/70 leading-relaxed">
               Export your complete cycle history and symptom log to show your Gynecologist.
             </p>
           </div>
@@ -1975,10 +1969,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       <section id="faq" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-[#B95679] font-bold text-xs sm:text-sm uppercase tracking-widest block mb-2">
+            <span className="text-[#B95679] font-bold text-xs sm:text-sm uppercase tracking-widest block mb-3">
               Got Questions?
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B]">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-[#201A1B] leading-tight mb-3">
               Frequently Asked Questions
             </h2>
           </div>
@@ -1995,7 +1989,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                     onClick={() => toggleFaq(idx)}
                     className="w-full p-6 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer"
                   >
-                    <span className="font-bold text-base sm:text-lg text-[#201A1B]">
+                    <span className="font-bold text-base sm:text-lg text-[#201A1B] leading-snug">
                       {faq.q}
                     </span>
                     <div className={`w-8 h-8 rounded-full bg-[#B95679]/10 text-[#B95679] flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#B95679] text-white' : ''}`}>
@@ -2004,7 +1998,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 text-sm text-[#201A1B]/75 leading-relaxed border-t border-[#B95679]/10 pt-4 animate-in fade-in duration-200">
+                    <div className="px-6 pb-6 text-sm text-[#201A1B]/75 leading-relaxed border-t border-[#B95679]/10 pt-4 animate-in fade-in duration-200 font-sans">
                       {faq.a}
                     </div>
                   )}
@@ -2027,7 +2021,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <Heart className="w-3.5 h-3.5 fill-[#B95679]" /> Message from Duo Developers
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-[#201A1B] mb-4">
+            <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-[#201A1B] leading-tight mb-4">
               A Personal Message to All Our Users 🌸
             </h3>
 
@@ -2074,11 +2068,11 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-widest mb-3">
               <Bug className="w-4 h-4 text-[#B95679]" /> GitHub Issue & Feedback Hub
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight mb-3">
               Report an Issue or Request a Feature
             </h2>
 
