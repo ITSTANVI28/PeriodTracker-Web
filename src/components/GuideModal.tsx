@@ -135,11 +135,11 @@ export const GuideModal: React.FC<GuideModalProps> = ({
           id: "download",
           badge: "📄 PDF Export & Mobile APK",
           title: "Clinical Reports & Android App",
-          subtitle: "Export doctor-ready summaries or install the offline Android APK.",
-          description: "Generate beautiful, clinical-ready PDF summaries to share with your gynecologist during checkups. Plus, download our direct, lightweight (6.1MB) Android APK directly with zero tracking.",
+          subtitle: "Export doctor-ready summaries or install the official Android APK.",
+          description: "Generate beautiful, clinical-ready PDF summaries to share with your gynecologist during checkups. Plus, download our direct, lightweight (~8.4 MB) signed Android APK v1.0 optimized for Android 14.",
           highlights: [
             "Doctor-Ready PDF Health Summary",
-            "Direct Android APK v1.0.1 (Zero Play Store Bloat)",
+            "Signed Android APK v1.0 (Android 14 Ready)",
             "Lead Creator: Tanvi Yadav (Full-Stack Developer)"
           ],
           actionText: "Download Android APK",
@@ -212,10 +212,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({
           badge: "📄 पीडीएफ रिपोर्ट व एंड्रॉइड ऐप",
           title: "डॉक्टर पीडीएफ रिपोर्ट एवं एपीके",
           subtitle: "डॉक्टर के लिए क्लिनिकल पीडीएफ बनाएं या एंड्रॉइड ऐप डाउनलोड करें।",
-          description: "स्त्रीरोग विशेषज्ञ को दिखाने के लिए अपने चक्र की विस्तृत पीडीएफ रिपोर्ट डाउनलोड करें या थेट 6.1MB चा हलका Android APK इन्स्टॉल करा.",
+          description: "स्त्रीरोग विशेषज्ञ को दिखाने के लिए अपने चक्र की विस्तृत पीडीएफ रिपोर्ट डाउनलोड करें या सीधे ~8.4 MB का आधिकारिक Android APK v1.0 इंस्टॉल करें।",
           highlights: [
             "डॉक्टर के लिए प्रिंटेबल पीडीएफ समरी",
-            "डायरेक्ट एंड्रॉइड APK (v1.0.1)",
+            "आधिकारिक Android APK (v1.0.0)",
             "निर्माता: तन्वी यादव (फुल-स्टॅक डेवलपर)"
           ],
           actionText: "APK डाउनलोड करें",
@@ -288,10 +288,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({
           badge: "📄 डॉक्टरांसाठी PDF व Android ॲप",
           title: "क्लिनिकल रिपोर्ट व Android APK",
           subtitle: "डॉक्टरांसाठी PDF रिपोर्ट डाउनलोड करा किंवा ॲप इन्स्टॉल करा.",
-          description: "स्त्रीरोग तज्ञांच्या भेटीसाठी संपूर्ण सायकल इतिहास असलेली प्रिंटेबल PDF डाऊनलोड करा किंवा थेट 6.1MB चा सुरक्षित Android APK इन्स्टॉल करा.",
+          description: "स्त्रीरोग तज्ञांच्या भेटीसाठी संपूर्ण सायकल इतिहास असलेली प्रिंटेबल PDF डाऊनलोड करा किंवा थेट ~8.4 MB चा सुरक्षित Android APK v1.0 इन्स्टॉल करा.",
           highlights: [
             "डॉक्टरांसाठी रेडीमेड PDF मेडिकल सारांश",
-            "डायरेक्ट Android APK v1.0.1 डाऊनलोड",
+            "अधिकृत Android APK v1.0.0 डाऊनलोड",
             "निर्माती: तन्वी यादव (फुल-स्टॅक डेव्हलपर)"
           ],
           actionText: "APK डाऊनलोड करा",

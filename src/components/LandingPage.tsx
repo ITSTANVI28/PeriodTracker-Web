@@ -52,18 +52,21 @@ import {
   Bug,
   MessageSquare,
   Copy,
-  FileCode,
-  AlertCircle,
-  Palette,
   Quote,
   WifiOff,
   Rocket,
-  Clock
+  Clock,
+  Cloud,
+  RefreshCw,
+  AlarmClock,
+  Layers,
+  FileCode,
+  Palette
 } from 'lucide-react';
 
 const GITHUB_REPO_URL = "https://github.com/ITSTANVI28/PeriodTracker";
 const GITHUB_ISSUES_URL = "https://github.com/ITSTANVI28/PeriodTracker/issues";
-const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.2/app-release.apk";
+const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0/app-release.apk";
 
 // Exported OfflineBadge component with hover tooltip explaining offline functionality
 export const OfflineBadge: React.FC<{ className?: string }> = ({ className = '' }) => {
@@ -99,7 +102,7 @@ export const OfflineBadge: React.FC<{ className?: string }> = ({ className = '' 
             <span>Zero Internet Required</span>
           </div>
           <p className="text-white/85 leading-relaxed font-sans">
-            CycleSync operates completely offline using local SQLite database storage on your phone. Predictions and logs stay 100% local and private!
+            PeriodTracker operates completely offline using local SQLite/Room database storage on your phone. Predictions and logs stay 100% local and private!
           </p>
           {/* Tooltip Arrow */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#16213E]"></div>
@@ -109,38 +112,288 @@ export const OfflineBadge: React.FC<{ className?: string }> = ({ className = '' 
   );
 };
 
+// Exported WhatsNewSection component spotlighting the newly implemented features in v1.0
+export const WhatsNewSection: React.FC = () => {
+  const whatsNewList = [
+    {
+      id: 'cloud-sync',
+      icon: Cloud,
+      title: 'Google Cloud Sync & 2-Way Backup',
+      badge: '☁️ Real-Time Sync',
+      badgeColor: 'bg-sky-100 text-sky-800 border-sky-200',
+      iconBg: 'bg-gradient-to-br from-sky-500 to-blue-600',
+      description: 'Seamlessly sign in with Google to sync period history, symptoms, and settings to Google Cloud Firestore in real-time. Easily restore all health records when switching to a new phone.',
+      highlights: [
+        'Google One-Tap Sign-In authentication in Settings',
+        'Real-time Firestore 2-way data synchronization',
+        '1-Tap instant multi-device restore on any new phone',
+        'Local-first: Works 100% offline if you choose not to sign in'
+      ]
+    },
+    {
+      id: 'smart-reminders',
+      icon: Bell,
+      title: 'Intelligent Daily Reminders & Custom Alerts',
+      badge: '⏰ Reboot-Proof Engine',
+      badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+      iconBg: 'bg-gradient-to-br from-amber-500 to-orange-600',
+      description: '5 built-in smart reminders (Period Alert, Ovulation Day, Fertile Window, Daily Hydration, and Nightly Symptom Log) + create unlimited personalized custom reminders.',
+      highlights: [
+        '5 Built-in clinical cycle & hydration smart alerts',
+        'Create unlimited personalized custom daily alarms',
+        'Persistent alarms automatically reschedule after phone reboots',
+        'Discreet, privacy-focused notification text with custom timings'
+      ]
+    },
+    {
+      id: 'day-details-sheet',
+      icon: Calendar,
+      title: 'Interactive Day Details Popup',
+      badge: '🗓️ Bottom Sheet UI',
+      badgeColor: 'bg-rose-100 text-rose-800 border-rose-200',
+      iconBg: 'bg-gradient-to-br from-[#B95679] to-[#D87093]',
+      description: 'Tap any day on the calendar to open a sleek Bottom Sheet showing real-time cycle phase, pregnancy probability chance, and quick actions to edit/delete logged flow and symptoms.',
+      highlights: [
+        '1-Tap Day Details Bottom Sheet popup on any calendar date',
+        'Real-time cycle phase status (Follicular, Ovulation, Luteal, Menstrual)',
+        'Calculates pregnancy probability chance for each cycle day',
+        'Quick-action buttons to instantly log, edit, or delete flow & symptoms'
+      ]
+    },
+    {
+      id: 'apk-release',
+      icon: Smartphone,
+      title: 'Production Release APK v1.0',
+      badge: '📦 Production v1.0',
+      badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+      iconBg: 'bg-gradient-to-br from-emerald-500 to-teal-600',
+      description: 'Direct download link for signed app-release.apk (Optimized for Android 14 / API 34, Lightweight ~8.4 MB).',
+      highlights: [
+        'Direct download link for official signed app-release.apk',
+        'Optimized for Android 14 (API Level 34) & backward compatible (API 24+)',
+        'Ultra-lightweight build (~8.4 MB) with ProGuard & R8 optimization',
+        'Verified cryptographic signature for safe side-loading'
+      ]
+    }
+  ];
+
+  return (
+    <section id="whats-new" className="py-12 sm:py-24 bg-gradient-to-b from-[#FFF8F8] via-white to-[#FFF0F3] border-t border-[#B95679]/15 relative overflow-hidden">
+      {/* Glow decorative blurs */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#B95679]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4 px-2 sm:px-0"
+        >
+          <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#B95679]/15 via-purple-500/15 to-[#B95679]/15 text-[#B95679] border border-[#B95679]/30 text-xs font-extrabold uppercase tracking-widest inline-flex items-center gap-1.5 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#B95679]" /> WHAT'S NEW IN RELEASE v1.0
+          </span>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#201A1B] tracking-tight leading-tight">
+            Latest Features & Release Updates
+          </h2>
+          <p className="text-sm sm:text-base lg:text-lg text-[#201A1B]/75 leading-relaxed">
+            Experience our newest major release: Google Cloud 2-way backup, reboot-proof intelligent cycle alerts, interactive calendar day bottom sheets, and the official signed Android 14 release APK.
+          </p>
+        </motion.div>
+
+        {/* 4 Feature Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          {whatsNewList.map((feat, index) => {
+            const IconComp = feat.icon;
+            return (
+              <motion.div
+                key={feat.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                className="bg-white rounded-3xl p-6 sm:p-7 border-2 border-[#B95679]/15 hover:border-[#B95679]/50 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5 relative overflow-hidden"
+              >
+                {/* Top decorative gradient line */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#B95679] via-[#D87093] to-[#E8B6CB] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-4 sm:mb-5">
+                    <div className={`w-12 h-12 rounded-2xl ${feat.iconBg} text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                      <IconComp className="w-6 h-6" />
+                    </div>
+                    <span className={`px-2.5 py-1 text-[11px] font-extrabold rounded-full border ${feat.badgeColor}`}>
+                      {feat.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-bold font-display text-[#201A1B] mb-2.5 group-hover:text-[#B95679] transition-colors leading-snug">
+                    {feat.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#201A1B]/75 leading-relaxed mb-5 font-normal">
+                    {feat.description}
+                  </p>
+                </div>
+
+                {/* Highlights List */}
+                <div className="pt-4 border-t border-gray-100 space-y-2">
+                  {feat.highlights.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-xs font-semibold text-[#201A1B]/80 leading-tight">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#B95679] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Interactive Feature Deep-Dive Visual Showcase Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mt-10 sm:mt-14 bg-[#16213E] rounded-3xl p-6 sm:p-10 border border-[#B95679]/30 text-white shadow-2xl relative overflow-hidden"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left: Summary & CTA */}
+            <div className="lg:col-span-6 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-xs font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-[#B95679]" /> Production Release v1.0 Live
+              </div>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display leading-tight text-white">
+                Everything You Need for Total Cycle Harmony
+              </h3>
+              <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
+                PeriodTracker v1.0 combines private local-first SQLite logging with optional Google Cloud Firestore sync, reboot-proof notifications, and clinical PDF medical export — completely free and ad-free.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href={DIRECT_APK_DOWNLOAD_URL}
+                  download
+                  className="px-6 py-3 bg-gradient-to-r from-[#B95679] to-[#9E4566] hover:from-[#a04665] hover:to-[#883a54] text-white font-bold text-xs sm:text-sm rounded-2xl transition-all shadow-lg flex items-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download Signed APK (~8.4 MB)</span>
+                </a>
+                <a
+                  href="#faq"
+                  className="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm rounded-2xl transition-all border border-white/15 active:scale-95"
+                >
+                  <span>Cloud Sync & Alarm FAQs →</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right: 3 Visual Mini Feature Pills */}
+            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              {/* Pill 1: Cloud Sync */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 hover:border-[#B95679]/50 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-sky-500/20 text-sky-300 flex items-center justify-center">
+                  <Cloud className="w-4 h-4" />
+                </div>
+                <div className="font-bold text-xs text-white font-display">Google Cloud Sync</div>
+                <p className="text-[11px] text-white/70 leading-snug">
+                  Real-time Firestore backup + instant restore when switching phones.
+                </p>
+                <span className="inline-block text-[10px] text-sky-300 font-bold bg-sky-500/10 px-2 py-0.5 rounded-md">
+                  Optional & Secure
+                </span>
+              </div>
+
+              {/* Pill 2: Reboot Proof Alarms */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 hover:border-[#B95679]/50 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center">
+                  <Bell className="w-4 h-4" />
+                </div>
+                <div className="font-bold text-xs text-white font-display">Smart Alarms</div>
+                <p className="text-[11px] text-white/70 leading-snug">
+                  5 built-in alerts + custom alarms that reschedule on device reboot.
+                </p>
+                <span className="inline-block text-[10px] text-amber-300 font-bold bg-amber-500/10 px-2 py-0.5 rounded-md">
+                  Boot Receiver Ready
+                </span>
+              </div>
+
+              {/* Pill 3: Day Details Sheet */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 hover:border-[#B95679]/50 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center">
+                  <Calendar className="w-4 h-4" />
+                </div>
+                <div className="font-bold text-xs text-white font-display">Day Details Sheet</div>
+                <p className="text-[11px] text-white/70 leading-snug">
+                  Tap calendar days for cycle phase, pregnancy probability chance & quick edits.
+                </p>
+                <span className="inline-block text-[10px] text-rose-300 font-bold bg-rose-500/10 px-2 py-0.5 rounded-md">
+                  Bottom Sheet Popup
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Exported KeyFeatures component highlighting CycleSync's main value propositions
 export const KeyFeatures: React.FC = () => {
   const featureList = [
     {
+      id: 'cloud-sync',
+      title: 'Google Cloud Sync & 2-Way Backup',
+      badge: '☁️ Cloud & Local',
+      badgeColor: 'bg-sky-100 text-sky-800 border-sky-200',
+      iconBg: 'bg-sky-600',
+      icon: Cloud,
+      description: 'Seamlessly sign in with Google to sync period history, symptoms, and settings to Google Cloud Firestore in real-time. Easily restore all health records when switching to a new phone.',
+      highlights: ['Google One-Tap Login', 'Firestore Real-Time Sync', 'Instant Multi-Device Restore']
+    },
+    {
+      id: 'smart-reminders',
+      title: 'Intelligent Daily Reminders & Custom Alerts',
+      badge: '⏰ Reboot-Proof',
+      badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+      iconBg: 'bg-amber-600',
+      icon: Bell,
+      description: '5 built-in smart reminders (Period Alert, Ovulation Day, Fertile Window, Daily Hydration, and Nightly Symptom Log) + create unlimited personalized custom reminders with reboot-proof scheduling.',
+      highlights: ['5 Built-in Smart Alerts', 'Unlimited Custom Alarms', 'Persistent Boot Receiver Engine']
+    },
+    {
+      id: 'day-details',
+      title: 'Interactive Day Details Popup',
+      badge: '🗓️ Bottom Sheet UI',
+      badgeColor: 'bg-rose-100 text-rose-800 border-rose-200',
+      iconBg: 'bg-[#B95679]',
+      icon: Calendar,
+      description: 'Tap any day on the calendar to open a sleek Bottom Sheet showing real-time cycle phase, pregnancy probability chance, and quick actions to edit/delete logged flow and symptoms.',
+      highlights: ['Real-Time Cycle Phase', 'Pregnancy Probability Rating', 'Quick Edit & Delete Actions']
+    },
+    {
       id: 'private-tracking',
-      title: '100% Private Tracking',
+      title: '100% Private & Local-First',
       badge: 'Zero-Cloud Security',
       badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
       iconBg: 'bg-emerald-600',
       icon: ShieldCheck,
-      description: 'Your menstrual logs, notes, and cycle data are stored exclusively in your phone\'s local SQLite/Room database. Zero cloud upload, zero account registration, and zero third-party tracking.',
-      highlights: ['Local SQLite Storage', 'No Account Required', 'Zero Data Selling']
+      description: 'Your menstrual logs, notes, and cycle data are stored securely in your phone\'s local SQLite/Room database. Zero mandatory accounts, zero data harvesting, and 100% offline functionality.',
+      highlights: ['Local SQLite/Room Storage', 'Optional Cloud Sync', 'Zero Data Selling']
     },
     {
       id: 'pcod-assessment',
       title: 'PCOD / PCOS Risk Assessment',
       badge: 'Clinical Screening',
-      badgeColor: 'bg-rose-100 text-rose-800 border-rose-200',
+      badgeColor: 'bg-purple-100 text-purple-800 border-purple-200',
       iconBg: 'bg-[#16213E]',
       icon: Stethoscope,
       description: 'An interactive 12-question diagnostic screening tool evaluating cycle regularity, hirsutism, acne, and hormonal indicators to calculate Low, Moderate, or High PCOD risk levels with health guidance.',
       highlights: ['12 Clinical Indicators', 'Instant Risk Score', 'Actionable Health Advice']
-    },
-    {
-      id: 'offline-functionality',
-      title: '100% Offline Functionality',
-      badge: 'Works Anywhere',
-      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
-      iconBg: 'bg-[#B95679]',
-      icon: Calendar,
-      description: 'Functions flawlessly without an active Wi-Fi or cellular data connection. Predict upcoming period start dates, peak ovulation, and fertile windows even when completely offline.',
-      highlights: ['Smart Prediction Engine', 'No Cell Signal Needed', 'Instant Response']
     },
     {
       id: 'symptom-logging',
@@ -156,7 +409,7 @@ export const KeyFeatures: React.FC = () => {
       id: 'pdf-export',
       title: 'Doctor-Ready PDF Reports',
       badge: 'Medical Export',
-      badgeColor: 'bg-purple-100 text-purple-800 border-purple-200',
+      badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',
       iconBg: 'bg-indigo-600',
       icon: FileText,
       description: 'Generate clean, printable PDF clinical reports containing full period histories and symptom logs to present directly to your gynecologist during health checkups.',
@@ -166,31 +419,11 @@ export const KeyFeatures: React.FC = () => {
       id: 'app-security',
       title: 'PIN & Biometric Lock',
       badge: 'App Protection',
-      badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
-      iconBg: 'bg-amber-600',
+      badgeColor: 'bg-violet-100 text-violet-800 border-violet-200',
+      iconBg: 'bg-violet-600',
       icon: Lock,
       description: 'Keep your personal journal safe from prying eyes with a custom 4-digit PIN lock and native Android fingerprint biometric authentication.',
       highlights: ['4-Digit PIN Security', 'Fingerprint Unlocking', 'Security Recovery Question']
-    },
-    {
-      id: 'discreet-reminders',
-      title: 'Discreet Local Alerts',
-      badge: 'Smart Reminders',
-      badgeColor: 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200',
-      iconBg: 'bg-fuchsia-600',
-      icon: Bell,
-      description: 'Receive subtle, customizable local push notifications for upcoming period start dates, fertile windows, water hydration goals, and medication schedules.',
-      highlights: ['Subtle Push Alerts', 'Custom Notification Times', '100% On-Device']
-    },
-    {
-      id: 'multilingual',
-      title: 'Multi-Language Support',
-      badge: 'EN • हिन्दी • मराठी',
-      badgeColor: 'bg-violet-100 text-violet-800 border-violet-200',
-      iconBg: 'bg-violet-600',
-      icon: Languages,
-      description: 'Fully localized interface supporting English, Hindi (हिन्दी 🇮🇳), and Marathi (मराठी 🇮🇳) for accessible menstrual health tracking in your preferred native language.',
-      highlights: ['Native Localizations', 'Instant Language Toggle', 'Culturally Adapted']
     }
   ];
 
@@ -396,14 +629,11 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
     setExpandedDevCards(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0.0/app-debug.apk";
-  const GITHUB_REPO_URL = "https://github.com/ITSTANVI28/PeriodTracker";
-
   const archDetails = {
-    arm64: { name: 'ARM64-V8A (RECOMMENDED)', size: '6.1 MB', tag: 'Most Modern Devices (95%+)' },
-    armv7: { name: 'ARMV7 (32-BIT)', size: '5.8 MB', tag: 'Older Android Devices' },
-    x86_64: { name: 'X86_64', size: '6.4 MB', tag: 'Emulators & Intel Chromebooks' },
-    universal: { name: 'UNIVERSAL (ALL ARCHITECTURES)', size: '14.2 MB', tag: 'All Android Devices (Fat APK)' }
+    arm64: { name: 'ARM64-V8A (RECOMMENDED)', size: '8.4 MB', tag: 'Android 14 Ready / Modern Devices (95%+)' },
+    armv7: { name: 'ARMV7 (32-BIT)', size: '8.1 MB', tag: 'Older 32-Bit Android Devices' },
+    x86_64: { name: 'X86_64', size: '8.7 MB', tag: 'Emulators & Intel Chromebooks' },
+    universal: { name: 'UNIVERSAL (ALL ARCHITECTURES)', size: '18.5 MB', tag: 'All Android Devices (Fat Signed APK)' }
   };
 
   // Translations for Multi-Language Demo
@@ -414,16 +644,16 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       heroSub: "Track periods, predict ovulation, log symptoms & assess PCOD risk safely on your Android device.",
       feat1Title: "📅 Period & Ovulation Prediction",
       feat1Desc: "Smart mathematical algorithm predicts upcoming period start dates, fertile windows, and peak ovulation days.",
-      feat2Title: "🩺 PCOD/PCOS Self-Assessment Quiz",
-      feat2Desc: "10-question weighted diagnostic questionnaire calculating Low, Moderate, or High risk profiles with advice.",
-      feat3Title: "📝 Symptom & Mood Logger (12+ Symptoms)",
-      feat3Desc: "Log cramps, headache, acne, bloating, fatigue, mood swings, backache, and water intake with 1-5 severity levels.",
-      feat4Title: "📄 PDF Medical Report Export",
-      feat4Desc: "Generate clean, printable PDF health reports containing cycle history and symptom trends to present to your doctor.",
-      feat5Title: "🌙 Dynamic Themes & Languages (EN, HI, MR)",
-      feat5Desc: "Native support for English, Hindi (हिन्दी 🇮🇳), and Marathi (मराठी 🇮🇳) alongside Light and Dark visual modes.",
-      feat6Title: "🔔 Custom Reminders & Notifications",
-      feat6Desc: "Discreet local notifications for period start reminders, ovulation alerts, water intake, and phase nutrition."
+      feat2Title: "☁️ Google Cloud Sync & 2-Way Backup",
+      feat2Desc: "Seamlessly sign in with Google to sync period history, symptoms, and settings to Google Cloud Firestore in real-time.",
+      feat3Title: "🔔 Smart Reminders & Reboot-Proof Alarms",
+      feat3Desc: "5 built-in smart reminders + unlimited custom alerts that automatically reschedule even after phone restarts.",
+      feat4Title: "🩺 PCOD/PCOS Self-Assessment Quiz",
+      feat4Desc: "10-question weighted diagnostic questionnaire calculating Low, Moderate, or High risk profiles with advice.",
+      feat5Title: "📝 Symptom & Mood Logger (12+ Symptoms)",
+      feat5Desc: "Log cramps, headache, acne, bloating, fatigue, mood swings, backache, and water intake with 1-5 severity levels.",
+      feat6Title: "📄 PDF Medical Report Export",
+      feat6Desc: "Generate clean, printable PDF health reports containing cycle history and symptom trends to present to your doctor."
     },
     hi: {
       badge: "✨ 100% सुरक्षित और गोपनीय पीरियड्स ट्रैकर",
@@ -431,16 +661,16 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       heroSub: "पीरियड्स ट्रैक करें, ओव्यूलेशन का अनुमान लगाएं, लक्षण रिकॉर्ड करें और PCOD जोखिम की जांच करें।",
       feat1Title: "📅 पीरियड्स एवं ओव्यूलेशन अनुमान",
       feat1Desc: "सटीक गणितीय एल्गोरिदम आपके अगले पीरियड्स और ओव्यूलेशन के दिनों की सटीक भविष्यवाणी करता है।",
-      feat2Title: "🩺 PCOD/PCOS स्व-मूल्यांकन क्विज़",
-      feat2Desc: "10-प्रश्नों का परीक्षण जो आपके स्वास्थ्य संकेतकों के आधार पर PCOD जोखिम का स्तर बताता है।",
-      feat3Title: "📝 लक्षण और मूड लॉगिंग (12+ लक्षण)",
-      feat3Desc: "पेट दर्द, मुंहासे, सिरदर्द, थकान, मूड स्विंग्स और पानी के सेवन की मात्रा आसानी से दर्ज करें।",
-      feat4Title: "📄 डॉक्टर हेतु पीडीएफ मेडिकल रिपोर्ट",
-      feat4Desc: "अपने डॉक्टर को दिखाने के लिए चक्र इतिहास और लक्षणों की प्रिंट-योग्य पीडीएफ रिपोर्ट बनाएं।",
-      feat5Title: "🌙 भाषाएं एवं डार्क मोड (हिन्दी/मराठी)",
-      feat5Desc: "हिन्दी, मराठी और अंग्रेजी भाषाओं का पूर्ण समर्थन एवं नाइट/डार्क विजुअल मोड।",
-      feat6Title: "🔔 रिमाइंडर एवं गुप्त नोटिफिकेशन",
-      feat6Desc: "पीरियड्स की तारीख, ओव्यूलेशन और पानी पीने के समय पर गोपनीय स्थानीय नोटिफिकेशन्स।"
+      feat2Title: "☁️ गूगल क्लाउड सिंक व 2-वे बैकअप",
+      feat2Desc: "गूगल अकाउंट से सुरक्षित साइन-इन करके अपना पूरा पीरियड्स डेटा रियल-टाइम में सुरक्षित क्लाउड पर बैकअप करें।",
+      feat3Title: "🔔 स्मार्ट रिमाइंडर्स एवं रीबूट-प्रूफ अलार्म",
+      feat3Desc: "५ इन-बिल्ट स्मार्ट अलर्ट्स व कस्टम रिमाइंडर्स जो फोन रीस्टार्ट होने के बाद भी अपने-आप रीशेड्यूल हो जाते हैं।",
+      feat4Title: "🩺 PCOD/PCOS स्व-मूल्यांकन क्विज़",
+      feat4Desc: "10-प्रश्नों का परीक्षण जो आपके स्वास्थ्य संकेतकों के आधार पर PCOD जोखिम का स्तर बताता है।",
+      feat5Title: "📝 लक्षण और मूड लॉगिंग (12+ लक्षण)",
+      feat5Desc: "पेट दर्द, मुंहासे, सिरदर्द, थकान, मूड स्विंग्स और पानी के सेवन की मात्रा आसानी से दर्ज करें।",
+      feat6Title: "📄 डॉक्टर हेतु पीडीएफ मेडिकल रिपोर्ट",
+      feat6Desc: "अपने डॉक्टर को दिखाने के लिए चक्र इतिहास और लक्षणों की प्रिंट-योग्य पीडीएफ रिपोर्ट बनाएं।"
     },
     mr: {
       badge: "✨ १००% खाजगी आणि सुरक्षित मासिक पाळी ट्रॅकर",
@@ -448,16 +678,16 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
       heroSub: "मासिक पाळी ट्रॅक करा, ओव्ह्युलेशनचा अंदाज लावा आणि PCOD धोक्याचे मूल्यांकन करा.",
       feat1Title: "📅 मासिक पाळी आणि ओव्ह्युलेशन अंदाज",
       feat1Desc: "स्मार्ट अल्गोरिदम पुढील पाळीची तारीख, सुपीकता काळ आणि ओव्ह्युलेशनच्या दिवसांचा अंदाज लावतो.",
-      feat2Title: "🩺 PCOD/PCOS स्वयं-मूल्यमापन चाचणी",
-      feat2Desc: "१० प्रश्नांची चाचणी जी तुम्हाला PCOD/PCOS धोक्याचे प्रमाण (कमी, मध्यम, जास्त) दर्शवते.",
-      feat3Title: "📝 लक्षणे आणि मूड नोंद (१२+ लक्षणे)",
-      feat3Desc: "पोटदुखी, डोकेदुखी, पिंपल्स, थकवा आणि पाण्याच्या सेवनाची नोंद १-५ तीव्रतेसह करा.",
-      feat4Title: "📄 डॉक्टरांसाठी पीडीएफ मेडिकल रिपोर्ट",
-      feat4Desc: "तुमच्या स्त्रीरोग तज्ञांना दाखवण्यासाठी पाळीचा इतिहास आणि लक्षणे असलेली पीडीएफ डाउनलोड करा.",
-      feat5Title: "🌙 बहुभाषिक व डार्क मोड (मराठी/हिंदी)",
-      feat5Desc: "मराठी, हिंदी आणि इंग्रजी भाषांचा पूर्ण सपोर्ट आणि डोळ्यांना सुखावणारा डार्क मोड.",
-      feat6Title: "🔔 रिमाइंडर आणि गुप्त नोटिफिकेशन्स",
-      feat6Desc: "पाळीची तारीख, ओव्ह्युलेशन आणि पाणी पिण्याच्या वेळेसाठी टप्प्याटप्प्याने येणारे गुप्त नोटिफिकेशन्स."
+      feat2Title: "☁️ गुगल क्लाउड सिंक व २-वे बॅकअप",
+      feat2Desc: "गुगल साइन-इन द्वारे पाळीचा इतिहास आणि लक्षणे सुरक्षित क्लाउडवर त्वरित सिंक आणि रिस्टोअर करा.",
+      feat3Title: "🔔 स्मार्ट रिमाइंडर्स व रीबूट-प्रूफ अलार्म्स",
+      feat3Desc: "५ अंगभूत स्मार्ट नोटिफिकेशन्स आणि फोन रीस्टार्ट झाल्यावरही चालू राहणारे सुरक्षित अलार्म्स.",
+      feat4Title: "🩺 PCOD/PCOS स्वयं-मूल्यमापन चाचणी",
+      feat4Desc: "१० प्रश्नांची चाचणी जी तुम्हाला PCOD/PCOS धोक्याचे प्रमाण (कमी, मध्यम, जास्त) दर्शवते.",
+      feat5Title: "📝 लक्षणे आणि मूड नोंद (१२+ लक्षणे)",
+      feat5Desc: "पोटदुखी, डोकेदुखी, पिंपल्स, थकवा आणि पाण्याच्या सेवनाची नोंद १-५ तीव्रतेसह करा.",
+      feat6Title: "📄 डॉक्टरांसाठी पीडीएफ मेडिकल रिपोर्ट",
+      feat6Desc: "तुमच्या स्त्रीरोग तज्ञांना दाखवण्यासाठी पाळीचा इतिहास आणि लक्षणे असलेली पीडीएफ डाउनलोड करा."
     }
   }[selectedLang];
 
@@ -517,7 +747,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
         doc.setTextColor(80, 80, 80);
         doc.text("Patient Identifier: Anonymous #PT-9042", 14, 45);
         doc.text("Export Date: August 03, 2026", 14, 52);
-        doc.text("App Build: CycleSync v1.0.1 Stable (Local SQLite Room DB)", 14, 59);
+        doc.text("App Build: PeriodTracker v1.0.0 Stable (Signed Release APK)", 14, 59);
         doc.text("Project Creator: Tanvi Yadav (Full-Stack Developer)", 14, 66);
 
         doc.setDrawColor(232, 182, 203);
@@ -556,13 +786,13 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
         doc.setFontSize(9.5);
         doc.setTextColor(60, 60, 60);
         doc.text("Patient maintains a regular 28-day cycle with minimal symptom variation.", 18, 208);
-        doc.text("All health logs remain 100% private and stored strictly on local device storage.", 18, 215);
+        doc.text("All health data remains 100% private with optional encrypted Google Cloud Sync.", 18, 215);
 
         doc.setFontSize(8);
         doc.setTextColor(140, 140, 140);
-        doc.text("Generated by CycleSync Android App | Created by Tanvi Yadav | https://github.com/ITSTANVI28/PeriodTracker", 14, 280);
+        doc.text("Generated by PeriodTracker Android App | Created by Tanvi Yadav | https://github.com/ITSTANVI28/PeriodTracker", 14, 280);
 
-        doc.save("CycleSync_Sample_Medical_Report.pdf");
+        doc.save("PeriodTracker_Sample_Medical_Report.pdf");
       } else {
         window.location.href = DIRECT_APK_DOWNLOAD_URL;
       }
@@ -577,12 +807,24 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
   const faqs = [
     {
+      q: "How does Google Cloud Sync work?",
+      a: "Simply sign in with your Google account in Settings. Your period logs and symptoms will automatically sync to secure Firebase Firestore and can be restored on any new device instantly."
+    },
+    {
+      q: "Will my reminders still work if my phone restarts?",
+      a: "Yes! Our smart Boot Receiver automatically restores all scheduled period, ovulation, and custom reminders right after your device boots up."
+    },
+    {
+      q: "Is Cloud Sync mandatory?",
+      a: "No, PeriodTracker is local-first. You can use the entire app 100% offline without signing in."
+    },
+    {
       q: "Is my period and symptom data completely private?",
-      a: "Yes, 100%. CycleSync uses a zero-cloud architecture. All your period logs, symptom entries, notes, and cycle statistics are stored locally on your device's SQLite/Room database. Nothing is ever uploaded to external cloud servers or sold to third parties."
+      a: "Yes, 100%. PeriodTracker uses a local-first architecture. All your period logs, symptom entries, notes, and cycle statistics are stored locally on your device's SQLite/Room database. Cloud sync to Google Firestore is completely optional and user-controlled."
     },
     {
       q: "Do I need an account or internet connection to use the app?",
-      a: "No account or login is required. The app functions completely offline without requiring an active internet connection, so your data remains accessible anywhere, anytime."
+      a: "No account or login is required. The app functions completely offline without requiring an active internet connection, so your data remains accessible anywhere, anytime. Google sign-in is available as an optional feature for multi-device restore."
     },
     {
       q: "How does the PIN & Biometric lock work?",
@@ -594,11 +836,11 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
     },
     {
       q: "Can I export my health records for my doctor?",
-      a: "Yes! CycleSync includes a built-in PDF generator that creates clean, doctor-ready medical summary reports containing your cycle history and logged symptom trends."
+      a: "Yes! PeriodTracker includes a built-in PDF generator that creates clean, doctor-ready medical summary reports containing your cycle history and logged symptom trends."
     },
     {
       q: "Are there any hidden subscription fees or advertisements?",
-      a: "No. CycleSync is 100% free, open-source, and free of any advertisements or monetized user tracking."
+      a: "No. PeriodTracker is 100% free, open-source, and free of any advertisements or monetized user tracking."
     }
   ];
 
@@ -621,7 +863,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-semibold text-[#201A1B]/85 shrink min-w-0">
-            <a href="#calculator" className="hover:text-[#B95679] transition-colors flex items-center gap-1 text-[#B95679] font-bold whitespace-nowrap">
+            <a href="#whats-new" className="hover:text-[#B95679] transition-colors flex items-center gap-1 font-bold text-[#B95679] whitespace-nowrap">
+              <Sparkles className="w-3.5 h-3.5 text-[#B95679]" /> What's New <span className="px-1.5 py-0.5 text-[9px] bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">v1.0</span>
+            </a>
+            <a href="#calculator" className="hover:text-[#B95679] transition-colors flex items-center gap-1 font-semibold whitespace-nowrap">
               <Calculator className="w-4 h-4 shrink-0" /> Calculator
             </a>
             <a href="#features" className="hover:text-[#B95679] transition-colors whitespace-nowrap">Features</a>
@@ -656,7 +901,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               download
               className="px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-full shadow-md shadow-[#B95679]/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
             >
-              <span>Download App 📱</span>
+              <span>Download v1.0 APK 📱</span>
             </a>
           </div>
 
@@ -716,8 +961,11 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             </button>
 
             <div className="grid grid-cols-2 gap-2 text-xs font-bold text-[#201A1B]/85">
-              <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-[#FFF8F8] border border-[#B95679]/15 rounded-xl text-[#B95679] flex items-center gap-2 active:scale-95">
-                <Calculator className="w-4 h-4" /> Quick Calculator
+              <a href="#whats-new" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-[#FFF8F8] border border-[#B95679]/15 rounded-xl text-[#B95679] flex items-center gap-2 active:scale-95">
+                <Sparkles className="w-4 h-4 text-[#B95679]" /> What's New v1.0
+              </a>
+              <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
+                <Calculator className="w-4 h-4" /> Calculator
               </a>
               <a href="#features" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
                 <Sparkles className="w-4 h-4 text-[#B95679]" /> Features
@@ -731,8 +979,8 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <a href="#issues" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl text-[#B95679] flex items-center gap-2 active:scale-95">
                 <Bug className="w-4 h-4" /> Report Issue
               </a>
-              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95">
-                <Info className="w-4 h-4 text-amber-600" /> FAQs
+              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="p-3 bg-gray-50 border border-gray-100 rounded-xl hover:text-[#B95679] flex items-center gap-2 active:scale-95 col-span-2">
+                <Info className="w-4 h-4 text-amber-600" /> Frequently Asked Questions
               </a>
             </div>
 
@@ -743,7 +991,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 className="w-full py-3.5 text-center text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-[#B95679] to-[#9E4566] rounded-2xl shadow-lg shadow-[#B95679]/25 flex items-center justify-center gap-2 active:scale-95 transition-transform"
               >
                 <Download className="w-4 h-4" />
-                Download Android APK 📱
+                Download Android APK v1.0 📱
               </a>
             </div>
           </div>
@@ -755,9 +1003,29 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Column */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
+            {/* Top Badges & Floating Update Banner */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              <div className="inline-flex items-center px-3 sm:px-4 py-1 rounded-full bg-[#B95679]/10 text-[#B95679] text-xs font-bold tracking-wide border border-[#B95679]/20 shadow-xs">
-                {t.badge}
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#B95679]/15 via-purple-500/15 to-[#B95679]/15 text-[#B95679] border border-[#B95679]/30 text-xs font-extrabold shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#B95679] shrink-0" />
+                <span>✨ New: Google Cloud Sync & Smart Reminders Enabled</span>
+              </div>
+
+              {/* Feature Pill: Cloud Backup & Restore */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 text-sky-800 border border-sky-500/30 text-xs font-bold shadow-xs">
+                <Cloud className="w-3.5 h-3.5 text-sky-600 shrink-0" />
+                <span>☁️ Cloud Backup & Restore</span>
+              </div>
+
+              {/* Feature Pill: Reboot-Proof Smart Alarms */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/30 text-xs font-bold shadow-xs">
+                <Bell className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <span>⏰ Reboot-Proof Smart Alarms</span>
+              </div>
+
+              {/* Feature Pill: Android 14 Ready */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/30 text-xs font-bold shadow-xs">
+                <Smartphone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span>📱 Android 14 Ready</span>
               </div>
 
               {/* 100% Ad-Free Visual Tag */}
@@ -774,7 +1042,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 aria-label="Open 100% Private Local Data Storage Policy"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>100% Private</span>
+                <span>100% Private (Local-First)</span>
                 <span className="text-[9px] bg-emerald-500/20 text-emerald-900 px-1.5 py-0.5 rounded-full font-extrabold uppercase">
                   Policy 🛡️
                 </span>
@@ -799,7 +1067,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 download
                 className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-2xl font-bold text-sm sm:text-base shadow-xl shadow-[#B95679]/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
               >
-                <span>Download Android App 📱</span>
+                <span>Download v1.0 Release APK 📱</span>
                 <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
 
@@ -818,13 +1086,17 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
             {/* Subtext */}
             <p className="text-[11px] sm:text-xs font-semibold text-[#201A1B]/60 pt-0.5">
-              Android 7.0+ • 100% Free & Offline • No Ads
+              Android 14 Ready (API 34) • Lightweight ~8.4 MB • Signed Production APK
             </p>
 
             {/* Badges */}
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-[#201A1B]/70">
-              <span className="flex items-center gap-1 text-purple-900 font-bold bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20">
-                <Sparkles className="w-3.5 h-3.5 text-purple-600" /> 100% Ad-Free
+              <span className="flex items-center gap-1 text-sky-900 font-bold bg-sky-500/10 px-2.5 py-1 rounded-full border border-sky-500/20">
+                <Cloud className="w-3.5 h-3.5 text-sky-600" /> Google Cloud Sync
+              </span>
+              <span className="hidden sm:inline w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
+              <span className="flex items-center gap-1 text-amber-900 font-bold bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+                <Bell className="w-3.5 h-3.5 text-amber-600" /> Reboot-Proof Alarms
               </span>
               <span className="hidden sm:inline w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
               <button 
@@ -833,16 +1105,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 title="View local-only data storage policy"
               >
                 <Lock className="w-3.5 h-3.5 text-[#B95679]" /> 
-                <span>No Account Needed</span>
-              </button>
-              <span className="hidden sm:inline w-1.5 h-1.5 bg-[#B95679]/40 rounded-full"></span>
-              <button 
-                onClick={() => setPrivacyModalOpen(true)}
-                className="flex items-center gap-1 hover:text-[#B95679] transition-colors cursor-pointer group bg-white/70 sm:bg-transparent px-2 sm:px-0 py-0.5 sm:py-0 rounded-lg"
-                title="View local-only data storage policy"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-[#B95679]" /> 
-                <span>Zero Cloud Data</span>
+                <span>No Account Needed (Offline)</span>
               </button>
             </div>
           </div>
@@ -933,6 +1196,9 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
           </div>
         </div>
       </section>
+
+      {/* 🆕 WHAT'S NEW SECTION (SPOTLIGHTING v1.0 FEATURES) */}
+      <WhatsNewSection />
 
       {/* KEY FEATURES SECTION */}
       <KeyFeatures />
@@ -1210,13 +1476,13 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
           {/* Section Heading */}
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
             <span className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#B95679]/20 text-[#E8B6CB] border border-[#B95679]/30 text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-block mb-2 sm:mb-3">
-              📲 GET THE APK DIRECTLY
+              📲 GET THE PRODUCTION APK DIRECTLY
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white tracking-tight leading-tight mb-2 sm:mb-3">
               Direct Download & Scan
             </h2>
             <p className="text-xs sm:text-base text-white/70 leading-relaxed px-2">
-              Select your phone architecture or scan the QR code to install the latest CycleSync Android APK.
+              Select your phone architecture or scan the QR code to install the signed PeriodTracker v1.0 Android APK.
             </p>
           </div>
 
@@ -1228,7 +1494,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div>
                 {/* Header Badge */}
                 <div className="inline-block px-3.5 sm:px-4 py-1.5 rounded-full bg-white text-[#16213E] text-[11px] sm:text-xs font-extrabold uppercase tracking-wider shadow-md mb-4 sm:mb-6">
-                  DIRECT DOWNLOAD
+                  OFFICIAL RELEASE APK
                 </div>
 
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -1236,7 +1502,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                     <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-[#B95679]" />
                     Select Device Architecture
                   </h3>
-                  <span className="text-[11px] sm:text-xs text-[#E8B6CB] font-mono">v1.0.1 Stable</span>
+                  <span className="text-[11px] sm:text-xs text-[#E8B6CB] font-mono font-bold bg-[#B95679]/20 px-2 py-0.5 rounded-full">v1.0.0 Production</span>
                 </div>
 
                 {/* Radio Selection Options */}
@@ -1285,7 +1551,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   download
                   className="w-full py-3.5 sm:py-4 bg-white text-[#16213E] hover:bg-gray-100 rounded-2xl sm:rounded-full font-extrabold text-sm sm:text-lg shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer text-center"
                 >
-                  <span>📥 DOWNLOAD APK ({archDetails[selectedArch].size})</span>
+                  <span>📥 DOWNLOAD SIGNED APK ({archDetails[selectedArch].size})</span>
                 </a>
 
                 {/* Support Developer Footer */}
@@ -1320,7 +1586,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                     SCAN TO DOWNLOAD
                   </h3>
                   <p className="text-[11px] sm:text-sm text-white/70 max-w-xs mx-auto leading-relaxed">
-                    Point your mobile camera at this QR code to download the latest APK directly.
+                    Point your mobile camera at this QR code to download the official v1.0 release APK directly.
                   </p>
                 </div>
 
@@ -1328,7 +1594,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 <div className="p-3 sm:p-4 bg-white rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-[#B95679]/30 my-1 sm:my-2 inline-block relative group">
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(DIRECT_APK_DOWNLOAD_URL)}&color=16213e&bgcolor=ffffff`}
-                    alt="Scan QR Code to Download CycleSync APK"
+                    alt="Scan QR Code to Download PeriodTracker APK"
                     className="w-36 h-36 sm:w-48 sm:h-48 object-contain rounded-xl"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
@@ -1336,7 +1602,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   />
                   <div className="text-[9px] sm:text-[10px] text-[#16213E] font-bold mt-1.5 sm:mt-2 tracking-wider flex items-center justify-center gap-1.5">
                     <img src="/ic_launcher-playstore-removebg-preview.png" alt="Logo" className="w-3.5 h-3.5 object-contain" />
-                    <span>CycleSync v1.0.1</span>
+                    <span>PeriodTracker v1.0</span>
                   </div>
                 </div>
               </div>
@@ -1344,7 +1610,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               <div className="w-full pt-3 sm:pt-4 border-t border-white/10">
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-extrabold text-[#E8B6CB] bg-white/5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>SUPPORTS ANDROID 7.0+ (API 24+)</span>
+                  <span>SUPPORTS ANDROID 7.0+ (OPTIMIZED FOR ANDROID 14)</span>
                 </div>
               </div>
             </div>
@@ -1359,22 +1625,22 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
               <span className="text-[11px] text-[#E8B6CB] uppercase font-extrabold tracking-wider block mb-1">App Build Version</span>
-              <span className="text-lg font-bold text-white font-mono">v1.0.1 Stable</span>
+              <span className="text-lg font-bold text-white font-mono">v1.0.0 Release</span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
-              <span className="text-[11px] text-[#E8B6CB] uppercase font-extrabold tracking-wider block mb-1">Lightweight Size</span>
-              <span className="text-lg font-bold text-white font-mono">~6.1 MB APK</span>
+              <span className="text-[11px] text-[#E8B6CB] uppercase font-extrabold tracking-wider block mb-1">Optimized Size</span>
+              <span className="text-lg font-bold text-white font-mono">~8.4 MB (ARM64)</span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
               <span className="text-[11px] text-[#E8B6CB] uppercase font-extrabold tracking-wider block mb-1">Android Compatibility</span>
-              <span className="text-lg font-bold text-white font-mono">Android 7.0+ (API 24+)</span>
+              <span className="text-lg font-bold text-emerald-400 font-mono">Android 14 (API 34)</span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
-              <span className="text-[11px] text-[#E8B6CB] uppercase font-extrabold tracking-wider block mb-1">Risky Permissions</span>
-              <span className="text-lg font-bold text-emerald-400 font-mono">ZERO Required</span>
+              <span className="text-[11px] text-[#E8B6CB] uppercase font-extrabold tracking-wider block mb-1">Storage & Sync</span>
+              <span className="text-lg font-bold text-sky-400 font-mono">Local + Cloud Sync</span>
             </div>
           </div>
         </div>
@@ -1639,31 +1905,32 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                   <div className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#16213E] border border-[#B95679]/40 hover:border-[#B95679] transition-all duration-300 shadow-xl space-y-3 sm:space-y-4">
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                       <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#B95679] text-white text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-md shadow-[#B95679]/30">
-                        v1.0.1
+                        v1.0.0
                       </span>
                       <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/10 text-[#E8B6CB] border border-white/10 text-[11px] sm:text-xs font-bold">
-                        3 Aug 2026
+                        1 Sep 2026
                       </span>
                       <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] sm:text-xs font-bold flex items-center gap-1">
-                        <Zap className="w-3 h-3" /> LATEST
+                        <Zap className="w-3 h-3" /> LATEST RELEASE
                       </span>
                     </div>
 
                     <h3 className="text-base sm:text-2xl font-bold text-white font-display leading-snug">
-                      In-App GitHub Releases Auto-Update Engine
+                      Google Cloud Sync, Smart Reminders & Production Release v1.0
                     </h3>
 
                     <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
-                      Asynchronous update checker querying GitHub API v3 with release notes and 1-click APK download dialog.
+                      Added optional Google Cloud Firestore 2-way backup & multi-device restore, reboot-proof smart reminder engine with AlarmManager & BootReceiver, interactive Calendar Day Details Bottom Sheet, and signed Android 14 APK.
                     </p>
 
                     {expandedDevCards['v1.0.1'] && (
                       <div className="pt-3 mt-3 sm:pt-4 sm:mt-4 border-t border-white/10 text-xs text-white/70 space-y-2 animate-in fade-in duration-200">
                         <p className="font-semibold text-[#E8B6CB]">Technical Highlights:</p>
                         <ul className="list-disc list-inside space-y-1 text-white/80">
-                          <li>Custom OkHttp background service querying <code className="text-[#E8B6CB]">api.github.com/repos/ITSTANVI28/PeriodTracker/releases/latest</code></li>
-                          <li>Semantic versioning parser checking target build codes against installed Android APK version</li>
-                          <li>In-app alert modal showing release notes, tag name, and direct APK download link</li>
+                          <li>Google One-Tap Authentication & Firestore 2-way real-time document synchronization with 100% offline fallback</li>
+                          <li>Persistent AlarmManager reminders with <code className="text-[#E8B6CB]">BOOT_COMPLETED</code> BroadcastReceiver for reboot resilience</li>
+                          <li>Interactive Day Details BottomSheetDialogFragment calculating real-time cycle phase & pregnancy probability chance</li>
+                          <li>Official signed Production APK build optimized for Android 14 (API 34, lightweight ~8.4 MB)</li>
                         </ul>
                       </div>
                     )}
@@ -1689,7 +1956,7 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                         download
                         className="text-xs font-bold text-white/70 hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
                       >
-                        <span>Download APK</span>
+                        <span>Download Signed APK (~8.4 MB)</span>
                         <Download className="w-3.5 h-3.5" />
                       </a>
                     </div>
