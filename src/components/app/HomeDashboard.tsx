@@ -39,7 +39,7 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
     profile.avgPeriodLength
   );
 
-  const APK_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0/app-release.apk";
+  const APK_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0.0/app-release.apk";
 
   // Build mini upcoming 7 days calendar
   const today = new Date();

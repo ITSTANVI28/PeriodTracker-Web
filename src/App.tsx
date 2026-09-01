@@ -99,7 +99,7 @@ export default function App() {
   };
 
   const currentLang = appState.settings.language || 'EN';
-  const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0/app-release.apk";
+  const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0.0/app-release.apk";
 
   return (
     <div className="min-h-screen bg-[#FFF8F8] text-[#16213E] flex flex-col selection:bg-[#B95679] selection:text-white">

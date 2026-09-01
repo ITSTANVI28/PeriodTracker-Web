@@ -66,7 +66,7 @@ import {
 
 const GITHUB_REPO_URL = "https://github.com/ITSTANVI28/PeriodTracker";
 const GITHUB_ISSUES_URL = "https://github.com/ITSTANVI28/PeriodTracker/issues";
-const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0/app-release.apk";
+const DIRECT_APK_DOWNLOAD_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0.0/app-release.apk";
 
 // Exported OfflineBadge component with hover tooltip explaining offline functionality
 export const OfflineBadge: React.FC<{ className?: string }> = ({ className = '' }) => {

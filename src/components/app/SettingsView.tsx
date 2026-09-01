@@ -74,7 +74,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   const [syncingNow, setSyncingNow] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
 
-  const APK_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0/app-release.apk";
+  const APK_URL = "https://github.com/ITSTANVI28/PeriodTracker/releases/download/v1.0.0/app-release.apk";
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
