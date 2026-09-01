@@ -60,6 +60,23 @@ export interface SecurityQuestion {
   answerHash: string;
 }
 
+export interface ReminderItem {
+  id: string;
+  title: string;
+  time: string;
+  enabled: boolean;
+  type: 'builtin' | 'custom';
+  description?: string;
+}
+
+export interface CloudSyncInfo {
+  isSignedIn: boolean;
+  email?: string;
+  name?: string;
+  lastSynced?: string;
+  photoUrl?: string;
+}
+
 export interface UserSettings {
   language: Language;
   theme: 'light' | 'dark';
@@ -67,6 +84,8 @@ export interface UserSettings {
   pinHash?: string;
   securityQuestion?: SecurityQuestion;
   profile: UserProfile;
+  reminders?: ReminderItem[];
+  cloudSync?: CloudSyncInfo;
 }
 
 export interface AppState {
@@ -78,3 +97,4 @@ export interface AppState {
   symptomLogs: SymptomLog[];
   pcodHistory: PcodResult[];
 }
+

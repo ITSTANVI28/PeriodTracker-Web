@@ -497,7 +497,11 @@ export const KeyFeatures: React.FC = () => {
   );
 };
 
-export const LandingPage: React.FC = () => {
+export interface LandingPageProps {
+  onOpenWebApp?: () => void;
+}
+
+export const LandingPage: React.FC<LandingPageProps> = ({ onOpenWebApp }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
@@ -887,6 +891,15 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
           {/* Desktop Action Button & Guide */}
           <div className="hidden md:flex items-center gap-2.5 shrink-0">
+            {onOpenWebApp && (
+              <button
+                onClick={onOpenWebApp}
+                className="px-4 py-2 text-xs sm:text-sm font-bold bg-[#B95679] text-white hover:bg-[#9E4566] rounded-full transition-all shadow-md shadow-[#B95679]/20 hover:scale-105 active:scale-95 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+              >
+                <span>Launch Web App 🌐</span>
+              </button>
+            )}
+
             <button
               onClick={() => setGuideModalOpen(true)}
               className="px-3.5 py-2 text-xs sm:text-sm font-bold bg-[#B95679]/10 hover:bg-[#B95679]/20 text-[#B95679] border border-[#B95679]/25 rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-xs whitespace-nowrap"
@@ -899,9 +912,9 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
             <a 
               href={DIRECT_APK_DOWNLOAD_URL}
               download
-              className="px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-full shadow-md shadow-[#B95679]/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
+              className="px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold bg-[#16213E] hover:bg-[#1A1A2E] text-white rounded-full shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
             >
-              <span>Download v1.0 APK 📱</span>
+              <span>APK v1.0 📱</span>
             </a>
           </div>
 
@@ -984,11 +997,24 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
               </a>
             </div>
 
-            <div className="pt-2">
+            {/* In-Drawer Quick Launch Web App Button */}
+            {onOpenWebApp && (
+              <button
+                onClick={() => {
+                  onOpenWebApp();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full py-3 text-center text-xs sm:text-sm font-extrabold text-white bg-[#B95679] rounded-2xl shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              >
+                <span>Launch Web App Directly 🌐</span>
+              </button>
+            )}
+
+            <div className="pt-1">
               <a 
                 href={DIRECT_APK_DOWNLOAD_URL}
                 download
-                className="w-full py-3.5 text-center text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-[#B95679] to-[#9E4566] rounded-2xl shadow-lg shadow-[#B95679]/25 flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                className="w-full py-3.5 text-center text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-[#16213E] to-[#1A1A2E] rounded-2xl shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform"
               >
                 <Download className="w-4 h-4" />
                 Download Android APK v1.0 📱
@@ -1062,12 +1088,22 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
             {/* Main CTA Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
+              {onOpenWebApp && (
+                <button
+                  onClick={onOpenWebApp}
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#B95679] hover:bg-[#9E4566] text-white rounded-2xl font-extrabold text-sm sm:text-base shadow-xl shadow-[#B95679]/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+                >
+                  <span>Launch Web App 🌐</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+              )}
+
               <a 
                 href={DIRECT_APK_DOWNLOAD_URL}
                 download
-                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#B95679] to-[#9E4566] text-white rounded-2xl font-bold text-sm sm:text-base shadow-xl shadow-[#B95679]/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 bg-gradient-to-r from-[#16213E] to-[#1A1A2E] text-white rounded-2xl font-bold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
               >
-                <span>Download v1.0 Release APK 📱</span>
+                <span>Download v1.0 APK 📱</span>
                 <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
 
@@ -1075,10 +1111,10 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
                 href={GITHUB_REPO_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 border-2 border-[#201A1B]/15 hover:border-[#B95679] rounded-2xl font-bold text-sm sm:text-base text-[#201A1B] hover:text-[#B95679] flex items-center justify-center gap-2 transition-all hover:bg-white/60 active:scale-95"
+                className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 border-2 border-[#201A1B]/15 hover:border-[#B95679] rounded-2xl font-bold text-sm sm:text-base text-[#201A1B] hover:text-[#B95679] flex items-center justify-center gap-2 transition-all hover:bg-white/60 active:scale-95"
               >
                 <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>GitHub Source</span>
+                <span>GitHub</span>
               </a>
 
               <OfflineBadge className="w-full sm:w-auto justify-center" />

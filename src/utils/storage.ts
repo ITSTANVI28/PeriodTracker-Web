@@ -35,7 +35,17 @@ export function getDefaultState(): AppState {
       avgCycleLength: 28,
       avgPeriodLength: 5,
       lastPeriodDate: period1Start.toISOString().split('T')[0]
-    }
+    },
+    cloudSync: {
+      isSignedIn: false
+    },
+    reminders: [
+      { id: 'rem-1', title: 'Period Alert (2 Days Before)', time: '09:00', enabled: true, type: 'builtin', description: 'Early notification for upcoming menstrual cycle' },
+      { id: 'rem-2', title: 'Ovulation Day (Peak Fertility)', time: '09:00', enabled: true, type: 'builtin', description: 'Peak conception probability alert' },
+      { id: 'rem-3', title: 'Fertile Window Active', time: '09:00', enabled: true, type: 'builtin', description: 'Fertile days notification' },
+      { id: 'rem-4', title: 'Daily Hydration Reminder', time: '11:00', enabled: true, type: 'builtin', description: 'Drink water goal tracker' },
+      { id: 'rem-5', title: 'Nightly Symptom Log Prompt', time: '20:00', enabled: true, type: 'builtin', description: 'Log moods, cramps, and daily health metrics' }
+    ]
   };
 
   const defaultPeriodLogs: PeriodLog[] = [
