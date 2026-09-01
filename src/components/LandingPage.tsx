@@ -866,35 +866,32 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
           </a>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-semibold text-[#201A1B]/85 shrink min-w-0">
+          <div className="hidden xl:flex items-center gap-3.5 2xl:gap-5 text-xs xl:text-sm font-semibold text-[#201A1B]/85 shrink min-w-0">
             <a href="#whats-new" className="hover:text-[#B95679] transition-colors flex items-center gap-1 font-bold text-[#B95679] whitespace-nowrap">
               <Sparkles className="w-3.5 h-3.5 text-[#B95679]" /> What's New <span className="px-1.5 py-0.5 text-[9px] bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">v1.0</span>
             </a>
             <a href="#calculator" className="hover:text-[#B95679] transition-colors flex items-center gap-1 font-semibold whitespace-nowrap">
-              <Calculator className="w-4 h-4 shrink-0" /> Calculator
+              <Calculator className="w-3.5 h-3.5 shrink-0" /> Calculator
             </a>
             <a href="#features" className="hover:text-[#B95679] transition-colors whitespace-nowrap">Features</a>
             <a href="#privacy" className="hover:text-[#B95679] transition-colors whitespace-nowrap">Privacy</a>
             <a href="#download" className="hover:text-[#B95679] transition-colors font-bold text-[#B95679] whitespace-nowrap">Download</a>
-            <a href="#pdf-report" className="hover:text-[#B95679] transition-colors whitespace-nowrap">PDF Report</a>
-            <a href="#devlog" className="hover:text-[#B95679] transition-colors hidden xl:flex items-center gap-1 whitespace-nowrap">
+            <a href="#pdf-report" className="hover:text-[#B95679] transition-colors hidden 2xl:block whitespace-nowrap">PDF Report</a>
+            <a href="#devlog" className="hover:text-[#B95679] transition-colors hidden 2xl:flex items-center gap-1 whitespace-nowrap">
               <span>Dev Log</span>
-              <span className="px-1.5 py-0.5 text-[9px] bg-[#B95679]/10 text-[#B95679] rounded-full font-bold">
-                v1.0
-              </span>
             </a>
-            <a href="#issues" className="hover:text-[#B95679] transition-colors hidden xl:flex items-center gap-1 font-semibold text-[#B95679] whitespace-nowrap">
+            <a href="#issues" className="hover:text-[#B95679] transition-colors hidden 2xl:flex items-center gap-1 font-semibold text-[#B95679] whitespace-nowrap">
               <Bug className="w-3.5 h-3.5 shrink-0" /> Issues
             </a>
             <a href="#faq" className="hover:text-[#B95679] transition-colors whitespace-nowrap">FAQ</a>
           </div>
 
-          {/* Desktop Action Button & Guide */}
-          <div className="hidden md:flex items-center gap-2.5 shrink-0">
+          {/* Desktop Action Buttons */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-2.5 shrink-0">
             {onOpenWebApp && (
               <button
                 onClick={onOpenWebApp}
-                className="px-4 py-2 text-xs sm:text-sm font-bold bg-[#B95679] text-white hover:bg-[#9E4566] rounded-full transition-all shadow-md shadow-[#B95679]/20 hover:scale-105 active:scale-95 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                className="px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold bg-[#B95679] text-white hover:bg-[#9E4566] rounded-full transition-all shadow-md shadow-[#B95679]/20 hover:scale-105 active:scale-95 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
               >
                 <span>Launch Web App 🌐</span>
               </button>
@@ -902,26 +899,27 @@ ${issueSteps.trim() ? `### 🔄 Steps to Reproduce / Details\n${issueSteps.trim(
 
             <button
               onClick={() => setGuideModalOpen(true)}
-              className="px-3.5 py-2 text-xs sm:text-sm font-bold bg-[#B95679]/10 hover:bg-[#B95679]/20 text-[#B95679] border border-[#B95679]/25 rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-xs whitespace-nowrap"
+              className="hidden 2xl:flex px-3 py-2 text-xs font-bold bg-[#B95679]/10 hover:bg-[#B95679]/20 text-[#B95679] border border-[#B95679]/25 rounded-full transition-all items-center gap-1.5 cursor-pointer active:scale-95 shadow-xs whitespace-nowrap"
               title="Open Welcome & Feature Guide"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{selectedLang === 'mr' ? '📖 ॲप गाईड' : selectedLang === 'hi' ? '📖 ऐप गाइड' : '📖 Guide Tour'}</span>
+              <span>{selectedLang === 'mr' ? '📖 गाईड' : selectedLang === 'hi' ? '📖 गाइड' : '📖 Guide'}</span>
             </button>
 
             <a 
               href={DIRECT_APK_DOWNLOAD_URL}
               download
-              className="px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold bg-[#16213E] hover:bg-[#1A1A2E] text-white rounded-full shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
+              className="px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold bg-[#16213E] hover:bg-[#1A1A2E] text-white rounded-full shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
             >
-              <span>APK v1.0 📱</span>
+              <Download className="w-3.5 h-3.5" />
+              <span>APK v1.0</span>
             </a>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
+          {/* Mobile & Tablet Hamburger Toggle */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#201A1B] rounded-lg hover:bg-gray-100"
+            className="xl:hidden p-2 text-[#201A1B] rounded-lg hover:bg-gray-100"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6 text-[#B95679]" /> : <Menu className="w-6 h-6" />}
